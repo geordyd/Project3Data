@@ -1,0 +1,13 @@
+c:\users\geord\source\repos\FormsApp\FormsApp\obj\Debug\FormsApp.csprojResolveAssemblyReference.cache
+c:\users\geord\source\repos\FormsApp\FormsApp\obj\Debug\FormsApp.Properties.Resources.resources
+c:\users\geord\source\repos\FormsApp\FormsApp\obj\Debug\FormsApp.csproj.GenerateResource.Cache
+c:\users\geord\source\repos\FormsApp\FormsApp\obj\Debug\FormsApp.csproj.CoreCompileInputs.cache
+c:\users\geord\source\repos\FormsApp\FormsApp\bin\Debug\FormsApp.exe.config
+c:\users\geord\source\repos\FormsApp\FormsApp\bin\Debug\FormsApp.exe
+c:\users\geord\source\repos\FormsApp\FormsApp\bin\Debug\FormsApp.pdb
+c:\users\geord\source\repos\FormsApp\FormsApp\bin\Debug\Npgsql.dll
+c:\users\geord\source\repos\FormsApp\FormsApp\bin\Debug\System.Threading.Tasks.Extensions.dll
+c:\users\geord\source\repos\FormsApp\FormsApp\bin\Debug\Npgsql.xml
+c:\users\geord\source\repos\FormsApp\FormsApp\bin\Debug\System.Threading.Tasks.Extensions.xml
+c:\users\geord\source\repos\FormsApp\FormsApp\obj\Debug\FormsApp.exe
+c:\users\geord\source\repos\FormsApp\FormsApp\obj\Debug\FormsApp.pdb
