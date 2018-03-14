@@ -25,3 +25,13 @@ C:\Users\geord\Documents\GitHub\Project3Data\FormsApp\FormsApp\obj\Debug\FormsAp
 C:\Users\geord\Documents\GitHub\Project3Data\FormsApp\FormsApp\obj\Debug\FormsApp.csproj.CoreCompileInputs.cache
 C:\Users\geord\Documents\GitHub\Project3Data\FormsApp\FormsApp\obj\Debug\FormsApp.exe
 C:\Users\geord\Documents\GitHub\Project3Data\FormsApp\FormsApp\obj\Debug\FormsApp.pdb
+C:\Users\geord\Desktop\MignonGeordyGame\Project3Data\FormsApp\FormsApp\bin\Debug\FormsApp.exe.config
+C:\Users\geord\Desktop\MignonGeordyGame\Project3Data\FormsApp\FormsApp\bin\Debug\FormsApp.exe
+C:\Users\geord\Desktop\MignonGeordyGame\Project3Data\FormsApp\FormsApp\bin\Debug\FormsApp.pdb
+C:\Users\geord\Desktop\MignonGeordyGame\Project3Data\FormsApp\FormsApp\obj\Debug\FormsApp.csprojResolveAssemblyReference.cache
+C:\Users\geord\Desktop\MignonGeordyGame\Project3Data\FormsApp\FormsApp\obj\Debug\FormsApp.Form1.resources
+C:\Users\geord\Desktop\MignonGeordyGame\Project3Data\FormsApp\FormsApp\obj\Debug\FormsApp.Properties.Resources.resources
+C:\Users\geord\Desktop\MignonGeordyGame\Project3Data\FormsApp\FormsApp\obj\Debug\FormsApp.csproj.GenerateResource.Cache
+C:\Users\geord\Desktop\MignonGeordyGame\Project3Data\FormsApp\FormsApp\obj\Debug\FormsApp.csproj.CoreCompileInputs.cache
+C:\Users\geord\Desktop\MignonGeordyGame\Project3Data\FormsApp\FormsApp\obj\Debug\FormsApp.exe
+C:\Users\geord\Desktop\MignonGeordyGame\Project3Data\FormsApp\FormsApp\obj\Debug\FormsApp.pdb
