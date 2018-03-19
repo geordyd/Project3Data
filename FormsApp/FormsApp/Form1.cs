@@ -19,19 +19,25 @@ namespace FormsApp
 {
     public partial class Form1 : Form
     {
+        //loading in images
+        Bitmap img1 = Properties.Resources.johnwilliams_258x210;
+        Bitmap img2 = Properties.Resources.paling;
+        Bitmap img3 = Properties.Resources.makreel;
+        Bitmap img4 = Properties.Resources.snoek;
+        Bitmap img5 = Properties.Resources.blobvis;
+        
+
         public Form1()
         {
             InitializeComponent();
             ComboBoxSettings();
-
-
+            TrackBarSettings();
+            SwitchSettings();
+            
             //FillChart();
         }
 
-        private void chart1_Click(object sender, EventArgs e)
-        {
-
-        }
+        //connection with database
         private void FillChart()
         {
 
@@ -55,19 +61,200 @@ namespace FormsApp
         public void ComboBoxSettings()
         {
             this.comboBox1.DropDownWidth = 300;
-            this.comboBox1.Items.AddRange(new Object[] {"Item 1",
-                        "Item 2",
-                        "Item 3",
-                        "Item 4",
-                        "Item 5"});
+            this.comboBox1.Items.AddRange(new Object[] {
+                    "Afrikaanderwijk",
+                    "Agniesebuurt",
+                    "Bedrijvenpark Noord_West",
+                    "Bedrijventerrein Schieveen",
+                    "Bergpolder",
+                    "Beverwaard",
+                    "Blijdorp",
+                    "Blijdorpsepolder",
+                    "Bloemhof",
+                    "Bospolder",
+                    "Botlek",
+                    "Carnisse",
+                    "Charlois Zuidrand",
+                    "Cool",
+                    "Cs Kwartier",
+                    "De Esch",
+                    "Delfshaven",
+                    "Dijkzigt",
+                    "Dorp",
+                    "Eemhaven",
+                    "Europoort",
+                    "Feijenoord",
+                    "Groot IJsselmonde",
+                    "Heijplaat",
+                    "Het Lage Land",
+                    "Hillegersberg Noord",
+                    "Hillegersberg Zuid",
+                    "Hillesluis",
+                    "Hoogvliet Noord",
+                    "Hoogvliet Zuid",
+                    "Katendrecht",
+                    "Kleinpolder",
+                    "Kop van Zuid",
+                    "Kop van Zuid - Entrepot",
+                    "Kralingen  West",
+                    "Kralingen Oost",
+                    "Kralingse Bos",
+                    "Kralingseveer",
+                    "Landzicht",
+                    "Liskwartier",
+                    "Lombardijen",
+                    "Maasvlakte",
+                    "Middelland",
+                    "Molenlaankwartier",
+                    "Nesselande",
+                    "Nieuw Crooswijk",
+                    "Nieuw Mathenesse",
+                    "Nieuwe Werk",
+                    "Nieuwe Westen",
+                    "Noord Kethel",
+                    "Noordereiland",
+                    "Noordzeeweg",
+                    "Ommoord",
+                    "Onbekend",
+                    "Oosterflank",
+                    "Oud Charlois",
+                    "Oud Crooswijk",
+                    "Oud IJsselmonde",
+                    "Oud Mathenesse",
+                    "Oude Noorden",
+                    "Oude Westen",
+                    "Overschie",
+                    "Pendrecht",
+                    "Pernis",
+                    "Prinsenland",
+                    "Provenierswijk",
+                    "Rijnpoort",
+                    "Rivium",
+                    "Rozenburg",
+                    "Rubroek",
+                    "s Gravenland",
+                    "Schiebroek",
+                    "Schiemond",
+                    "Schieveen",
+                    "Spaanse Polder",
+                    "Spangen",
+                    "Stadsdriehoek",
+                    "Strand en Duin",
+                    "Struisenburg",
+                    "Tarwewijk",
+                    "Terbregge",
+                    "Tussendijken",
+                    "Vondelingenplaat",
+                    "Vreewijk",
+                    "Waalhaven",
+                    "Waalhaven Zuid",
+                    "Wielewaal",
+                    "Witte Dorp",
+                    "Zestienhoven",
+                    "Zevenkamp",
+                    "Zuiderpark",
+                    "Zuidplein",
+                    "Zuidwijk"});
+
             this.comboBox2.DropDownWidth = 300;
-            this.comboBox2.Items.AddRange(new object[] {"Item 1",
-                        "Item 2",
-                        "Item 3",
-                        "Item 4",
-                        "Item 5"});
+            this.comboBox2.Items.AddRange(new object[] {
+                    "Afrikaanderwijk",
+                    "Agniesebuurt",
+                    "Bedrijvenpark Noord_West",
+                    "Bedrijventerrein Schieveen",
+                    "Bergpolder",
+                    "Beverwaard",
+                    "Blijdorp",
+                    "Blijdorpsepolder",
+                    "Bloemhof",
+                    "Bospolder",
+                    "Botlek",
+                    "Carnisse",
+                    "Charlois Zuidrand",
+                    "Cool",
+                    "Cs Kwartier",
+                    "De Esch",
+                    "Delfshaven",
+                    "Dijkzigt",
+                    "Dorp",
+                    "Eemhaven",
+                    "Europoort",
+                    "Feijenoord",
+                    "Groot IJsselmonde",
+                    "Heijplaat",
+                    "Het Lage Land",
+                    "Hillegersberg Noord",
+                    "Hillegersberg Zuid",
+                    "Hillesluis",
+                    "Hoogvliet Noord",
+                    "Hoogvliet Zuid",
+                    "Katendrecht",
+                    "Kleinpolder",
+                    "Kop van Zuid",
+                    "Kop van Zuid - Entrepot",
+                    "Kralingen  West",
+                    "Kralingen Oost",
+                    "Kralingse Bos",
+                    "Kralingseveer",
+                    "Landzicht",
+                    "Liskwartier",
+                    "Lombardijen",
+                    "Maasvlakte",
+                    "Middelland",
+                    "Molenlaankwartier",
+                    "Nesselande",
+                    "Nieuw Crooswijk",
+                    "Nieuw Mathenesse",
+                    "Nieuwe Werk",
+                    "Nieuwe Westen",
+                    "Noord Kethel",
+                    "Noordereiland",
+                    "Noordzeeweg",
+                    "Ommoord",
+                    "Onbekend",
+                    "Oosterflank",
+                    "Oud Charlois",
+                    "Oud Crooswijk",
+                    "Oud IJsselmonde",
+                    "Oud Mathenesse",
+                    "Oude Noorden",
+                    "Oude Westen",
+                    "Overschie",
+                    "Pendrecht",
+                    "Pernis",
+                    "Prinsenland",
+                    "Provenierswijk",
+                    "Rijnpoort",
+                    "Rivium",
+                    "Rozenburg",
+                    "Rubroek",
+                    "s Gravenland",
+                    "Schiebroek",
+                    "Schiemond",
+                    "Schieveen",
+                    "Spaanse Polder",
+                    "Spangen",
+                    "Stadsdriehoek",
+                    "Strand en Duin",
+                    "Struisenburg",
+                    "Tarwewijk",
+                    "Terbregge",
+                    "Tussendijken",
+                    "Vondelingenplaat",
+                    "Vreewijk",
+                    "Waalhaven",
+                    "Waalhaven Zuid",
+                    "Wielewaal",
+                    "Witte Dorp",
+                    "Zestienhoven",
+                    "Zevenkamp",
+                    "Zuiderpark",
+                    "Zuidplein",
+                    "Zuidwijk"});
+
         }
 
+        //ComboBox1 code, show chart
         public void ChartExample()
         {
             this.chart1.Titles.Clear();
@@ -81,7 +268,7 @@ namespace FormsApp
             this.chart1.Palette = ChartColorPalette.EarthTones;
 
             // Set title
-            this.chart1.Titles.Add("Animals");
+            this.chart1.Titles.Add("ComboBox1");
 
             // Add series.
             for (int i = 0; i < seriesArray.Length; i++)
@@ -91,6 +278,7 @@ namespace FormsApp
             }
         }
 
+        //ComboBox1 code, show chart
         public void ChartExample2()
         {
             this.chart1.Titles.Clear();
@@ -104,7 +292,7 @@ namespace FormsApp
             this.chart1.Palette = ChartColorPalette.Grayscale;
 
             // Set title
-            this.chart1.Titles.Add("Animals");
+            this.chart1.Titles.Add("Combobox1");
 
             // Add series.
             for (int i = 0; i < seriesArray.Length; i++)
@@ -114,20 +302,171 @@ namespace FormsApp
             }
         }
 
+        //ComboBox2 code, show chart 
+        public void ChartExample3()
+        {
+            this.chart2.Titles.Clear();
+            this.chart2.Series.Clear();
+
+            // Data arrays
+            string[] seriesArray = { "Cat", "Dog", "Bird", "Monkey" };
+            int[] pointsArray = { 2, 1, 7, 5 };
+
+            // Set palette
+            this.chart2.Palette = ChartColorPalette.EarthTones;
+
+            // Set title
+            this.chart2.Titles.Add("ComboBox2");
+
+            // Add series.
+            for (int i = 0; i < seriesArray.Length; i++)
+            {
+                Series series = this.chart2.Series.Add(seriesArray[i]);
+                series.Points.Add(pointsArray[i]);
+            }
+        }
+
+        //ComboBox2 code, show chart
+        public void ChartExample4()
+        {
+            this.chart2.Titles.Clear();
+            this.chart2.Series.Clear();
+
+            // Data arrays
+            string[] seriesArray = { "Paling", "Makreel", "Snoek", "Goudvis" };
+            int[] pointsArray = { 10, 3, 6, 1 };
+
+            // Set palette
+            this.chart2.Palette = ChartColorPalette.Grayscale;
+
+            // Set title
+            this.chart2.Titles.Add("ComboBox2");
+
+            // Add series.
+            for (int i = 0; i < seriesArray.Length; i++)
+            {
+                Series series = this.chart2.Series.Add(seriesArray[i]);
+                series.Points.Add(pointsArray[i]);
+            }
+        }
+
+        //combobox1
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (this.comboBox1.SelectedIndex == this.comboBox1.FindStringExact("Item 1"))
+
+            if (this.comboBox1.SelectedIndex == this.comboBox1.FindStringExact("Afrikaanderwijk"))
             {
                 this.comboBox1.BackColor = System.Drawing.Color.Blue;
                 ChartExample();
             }
-            if (this.comboBox1.SelectedIndex == this.comboBox1.FindStringExact("Item 2"))
+            if (this.comboBox1.SelectedIndex == this.comboBox1.FindStringExact("Agniesebuurt"))
             {
                 this.comboBox1.BackColor = System.Drawing.Color.Red;
                 ChartExample2();
             }
 
         }
+
+        //combobox en checkbox combinatie
+        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (this.comboBox2.SelectedIndex == this.comboBox2.FindStringExact("Afrikaanderwijk") && !checkBox1.Checked)
+            {
+                this.comboBox2.BackColor = System.Drawing.Color.Red;
+                ChartExample3();
+
+            }
+            if (this.comboBox2.SelectedIndex == this.comboBox2.FindStringExact("Afrikaanderwijk") && checkBox1.Checked)
+            {
+                this.comboBox2.BackColor = System.Drawing.Color.Blue;
+                ChartExample4();
+
+            }
+            if (this.comboBox2.SelectedIndex == this.comboBox2.FindStringExact("Agniesebuurt"))
+            {
+                this.comboBox2.BackColor = System.Drawing.Color.Red;
+                ChartExample4();
+            }
+
+        }
+
+        //combobox en checkbox combinatie
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+
+            if (this.comboBox2.SelectedIndex == this.comboBox2.FindStringExact("Afrikaanderwijk") && !checkBox1.Checked)
+            {
+                this.comboBox2.BackColor = System.Drawing.Color.Red;
+                ChartExample3();
+
+            }
+            if (this.comboBox2.SelectedIndex == this.comboBox2.FindStringExact("Afrikaanderwijk") && checkBox1.Checked)
+            {
+                this.comboBox2.BackColor = System.Drawing.Color.Blue;
+                ChartExample4();
+
+            }
+            if (this.comboBox2.SelectedIndex == this.comboBox2.FindStringExact("Agniesebuurt"))
+            {
+                this.comboBox2.BackColor = System.Drawing.Color.Red;
+                ChartExample4();
+            }
+        }
+
+        //show trackbar at start app
+        public void TrackBarSettings()
+        {
+            trackBar1.Minimum = 0;
+
+            trackBar1.Maximum = 4;
+        }
+
+        //show value trackbar in textbox when scrolling
+        private void trackBar1_Scroll(object sender, EventArgs e)
+        {
+            // for debugging only
+            //textBox1.Text = trackBar1.Value.ToString();
+
+            SwitchSettings();
+        }
+        //Switchen van de map
+
+        public void SwitchSettings()
+        {
+            int caseSwitch = 0;
+
+            caseSwitch = this.trackBar1.Value;
+
+            switch (caseSwitch)
+            {
+                case 1:
+                    Console.WriteLine("Case 1");
+                    textBox1.Text = "Paling";
+                    pictureBox1.Image = img2;
+                    break;
+                case 2:
+                    Console.WriteLine("Case 2");
+                    textBox1.Text = "Makreel";
+                    pictureBox1.Image = img3;
+                    break;
+                case 3:
+                    Console.WriteLine("Case 3");
+                    textBox1.Text = "Snoek";
+                    pictureBox1.Image = img4;
+                    break;
+                case 4:
+                    Console.WriteLine("Case 4");
+                    textBox1.Text = "Blobvis (A.K.A. Raoul)";
+                    pictureBox1.Image = img5;
+                    break;
+                default:
+                    Console.WriteLine("Default case");
+                    textBox1.Text = "John";
+                    pictureBox1.Image = img1;
+                    break;
+            }
+        }
+
     }
 }
 
