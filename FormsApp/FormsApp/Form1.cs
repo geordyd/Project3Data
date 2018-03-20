@@ -20,12 +20,12 @@ namespace FormsApp
     public partial class Form1 : Form
     {
         //loading in images
-        Bitmap img1 = Properties.Resources.johnwilliams_258x210;
-        Bitmap img2 = Properties.Resources.paling;
-        Bitmap img3 = Properties.Resources.makreel;
-        Bitmap img4 = Properties.Resources.snoek;
-        Bitmap img5 = Properties.Resources.blobvis;
-        
+        Bitmap img1 = Properties.Resources.Versie1;
+        Bitmap img2 = Properties.Resources.Versie2;
+        Bitmap img3 = Properties.Resources.Versie3;
+        Bitmap img4 = Properties.Resources.Versie4;
+        Bitmap img5 = Properties.Resources.Versie5;
+
 
         public Form1()
         {
@@ -145,7 +145,7 @@ namespace FormsApp
             var series2 = new Series("Finance");
 
             series2.ChartType = SeriesChartType.Line;
-            series2.Points.DataBindXY(new[] { 5, 7, 2, 1 }, new[] { 3, 5, 2, 1 });
+            series2.Points.DataBindXY(new[] { 7, 5, 2, 1 }, new[] { 3, 5, 2, 1 });
             chart1.Series.Add(series2);
         }
 
@@ -180,7 +180,7 @@ namespace FormsApp
             var series = new Series("Finance");
 
             series.ChartType = SeriesChartType.Line;
-            series.Points.DataBindXY(new[] { 2001, 2002, 2003, 2004 }, new[] { 100, 200, 90, 150 });
+            series.Points.DataBindXY(new[] { 7, 5, 2, 1 }, new[] { 3, 5, 2, 1 });
             chart1.Series.Add(series);
         }
 
@@ -191,12 +191,12 @@ namespace FormsApp
 
             if (this.comboBox1.SelectedIndex == this.comboBox1.FindStringExact("Afrikaanderwijk"))
             {
-                this.comboBox1.BackColor = System.Drawing.Color.Blue;
+                //this.comboBox1.BackColor = System.Drawing.Color.Blue;
                 ChartExample();
             }
             if (this.comboBox1.SelectedIndex == this.comboBox1.FindStringExact("Agniesebuurt"))
             {
-                this.comboBox1.BackColor = System.Drawing.Color.Red;
+                //this.comboBox1.BackColor = System.Drawing.Color.Red;
                 ChartExample2();
             }
 
@@ -207,19 +207,19 @@ namespace FormsApp
         {
             if (this.comboBox2.SelectedIndex == this.comboBox2.FindStringExact("Afrikaanderwijk") && !checkBox1.Checked)
             {
-                this.comboBox2.BackColor = System.Drawing.Color.Red;
+               // this.comboBox2.BackColor = System.Drawing.Color.Red;
                 ChartExample3();
 
             }
             if (this.comboBox2.SelectedIndex == this.comboBox2.FindStringExact("Afrikaanderwijk") && checkBox1.Checked)
             {
-                this.comboBox2.BackColor = System.Drawing.Color.Blue;
+               // this.comboBox2.BackColor = System.Drawing.Color.Blue;
                 ChartExample4();
 
             }
             if (this.comboBox2.SelectedIndex == this.comboBox2.FindStringExact("Agniesebuurt"))
             {
-                this.comboBox2.BackColor = System.Drawing.Color.Red;
+                //this.comboBox2.BackColor = System.Drawing.Color.Red;
                 ChartExample4();
             }
 
@@ -231,19 +231,19 @@ namespace FormsApp
 
             if (this.comboBox2.SelectedIndex == this.comboBox2.FindStringExact("Afrikaanderwijk") && !checkBox1.Checked)
             {
-                this.comboBox2.BackColor = System.Drawing.Color.Red;
+                //this.comboBox2.BackColor = System.Drawing.Color.Red;
                 ChartExample3();
 
             }
             if (this.comboBox2.SelectedIndex == this.comboBox2.FindStringExact("Afrikaanderwijk") && checkBox1.Checked)
             {
-                this.comboBox2.BackColor = System.Drawing.Color.Blue;
+                //this.comboBox2.BackColor = System.Drawing.Color.Blue;
                 ChartExample4();
 
             }
             if (this.comboBox2.SelectedIndex == this.comboBox2.FindStringExact("Agniesebuurt"))
             {
-                this.comboBox2.BackColor = System.Drawing.Color.Red;
+                //this.comboBox2.BackColor = System.Drawing.Color.Red;
                 ChartExample4();
             }
         }
@@ -275,28 +275,23 @@ namespace FormsApp
             switch (caseSwitch)
             {
                 case 1:
-                    Console.WriteLine("Case 1");
-                    textBox1.Text = "Paling";
+                    textBox1.Text = "Map2";
                     pictureBox1.Image = img2;
                     break;
                 case 2:
-                    Console.WriteLine("Case 2");
-                    textBox1.Text = "Makreel";
+                    textBox1.Text = "Map2";
                     pictureBox1.Image = img3;
                     break;
                 case 3:
-                    Console.WriteLine("Case 3");
-                    textBox1.Text = "Snoek";
+                    textBox1.Text = "Map3";
                     pictureBox1.Image = img4;
                     break;
                 case 4:
-                    Console.WriteLine("Case 4");
-                    textBox1.Text = "Blobvis (A.K.A. Raoul)";
+                    textBox1.Text = "Map4";
                     pictureBox1.Image = img5;
                     break;
                 default:
-                    Console.WriteLine("Default case");
-                    textBox1.Text = "John";
+                    textBox1.Text = "Map1";
                     pictureBox1.Image = img1;
                     break;
             }

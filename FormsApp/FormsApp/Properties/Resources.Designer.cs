@@ -63,9 +63,9 @@ namespace FormsApp.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap blobvis {
+        internal static System.Drawing.Bitmap Versie1 {
             get {
-                object obj = ResourceManager.GetObject("blobvis", resourceCulture);
+                object obj = ResourceManager.GetObject("Versie1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -73,9 +73,9 @@ namespace FormsApp.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap johnwilliams_258x210 {
+        internal static System.Drawing.Bitmap Versie2 {
             get {
-                object obj = ResourceManager.GetObject("johnwilliams_258x210", resourceCulture);
+                object obj = ResourceManager.GetObject("Versie2", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -83,9 +83,9 @@ namespace FormsApp.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap johnwilliams_258x2101 {
+        internal static System.Drawing.Bitmap Versie3 {
             get {
-                object obj = ResourceManager.GetObject("johnwilliams_258x2101", resourceCulture);
+                object obj = ResourceManager.GetObject("Versie3", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -93,9 +93,9 @@ namespace FormsApp.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap makreel {
+        internal static System.Drawing.Bitmap Versie4 {
             get {
-                object obj = ResourceManager.GetObject("makreel", resourceCulture);
+                object obj = ResourceManager.GetObject("Versie4", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -103,29 +103,9 @@ namespace FormsApp.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap paling {
+        internal static System.Drawing.Bitmap Versie5 {
             get {
-                object obj = ResourceManager.GetObject("paling", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap paling1 {
-            get {
-                object obj = ResourceManager.GetObject("paling1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap snoek {
-            get {
-                object obj = ResourceManager.GetObject("snoek", resourceCulture);
+                object obj = ResourceManager.GetObject("Versie5", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
