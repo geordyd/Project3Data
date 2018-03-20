@@ -60,197 +60,15 @@ namespace FormsApp
 
         public void ComboBoxSettings()
         {
-            this.comboBox1.DropDownWidth = 300;
+            this.comboBox1.DropDownWidth = 100;
             this.comboBox1.Items.AddRange(new Object[] {
                     "Afrikaanderwijk",
-                    "Agniesebuurt",
-                    "Bedrijvenpark Noord_West",
-                    "Bedrijventerrein Schieveen",
-                    "Bergpolder",
-                    "Beverwaard",
-                    "Blijdorp",
-                    "Blijdorpsepolder",
-                    "Bloemhof",
-                    "Bospolder",
-                    "Botlek",
-                    "Carnisse",
-                    "Charlois Zuidrand",
-                    "Cool",
-                    "Cs Kwartier",
-                    "De Esch",
-                    "Delfshaven",
-                    "Dijkzigt",
-                    "Dorp",
-                    "Eemhaven",
-                    "Europoort",
-                    "Feijenoord",
-                    "Groot IJsselmonde",
-                    "Heijplaat",
-                    "Het Lage Land",
-                    "Hillegersberg Noord",
-                    "Hillegersberg Zuid",
-                    "Hillesluis",
-                    "Hoogvliet Noord",
-                    "Hoogvliet Zuid",
-                    "Katendrecht",
-                    "Kleinpolder",
-                    "Kop van Zuid",
-                    "Kop van Zuid - Entrepot",
-                    "Kralingen  West",
-                    "Kralingen Oost",
-                    "Kralingse Bos",
-                    "Kralingseveer",
-                    "Landzicht",
-                    "Liskwartier",
-                    "Lombardijen",
-                    "Maasvlakte",
-                    "Middelland",
-                    "Molenlaankwartier",
-                    "Nesselande",
-                    "Nieuw Crooswijk",
-                    "Nieuw Mathenesse",
-                    "Nieuwe Werk",
-                    "Nieuwe Westen",
-                    "Noord Kethel",
-                    "Noordereiland",
-                    "Noordzeeweg",
-                    "Ommoord",
-                    "Onbekend",
-                    "Oosterflank",
-                    "Oud Charlois",
-                    "Oud Crooswijk",
-                    "Oud IJsselmonde",
-                    "Oud Mathenesse",
-                    "Oude Noorden",
-                    "Oude Westen",
-                    "Overschie",
-                    "Pendrecht",
-                    "Pernis",
-                    "Prinsenland",
-                    "Provenierswijk",
-                    "Rijnpoort",
-                    "Rivium",
-                    "Rozenburg",
-                    "Rubroek",
-                    "s Gravenland",
-                    "Schiebroek",
-                    "Schiemond",
-                    "Schieveen",
-                    "Spaanse Polder",
-                    "Spangen",
-                    "Stadsdriehoek",
-                    "Strand en Duin",
-                    "Struisenburg",
-                    "Tarwewijk",
-                    "Terbregge",
-                    "Tussendijken",
-                    "Vondelingenplaat",
-                    "Vreewijk",
-                    "Waalhaven",
-                    "Waalhaven Zuid",
-                    "Wielewaal",
-                    "Witte Dorp",
-                    "Zestienhoven",
-                    "Zevenkamp",
-                    "Zuiderpark",
-                    "Zuidplein",
-                    "Zuidwijk"});
+                    "Agniesebuurt"});
 
-            this.comboBox2.DropDownWidth = 300;
+            this.comboBox2.DropDownWidth = 100;
             this.comboBox2.Items.AddRange(new object[] {
                     "Afrikaanderwijk",
-                    "Agniesebuurt",
-                    "Bedrijvenpark Noord_West",
-                    "Bedrijventerrein Schieveen",
-                    "Bergpolder",
-                    "Beverwaard",
-                    "Blijdorp",
-                    "Blijdorpsepolder",
-                    "Bloemhof",
-                    "Bospolder",
-                    "Botlek",
-                    "Carnisse",
-                    "Charlois Zuidrand",
-                    "Cool",
-                    "Cs Kwartier",
-                    "De Esch",
-                    "Delfshaven",
-                    "Dijkzigt",
-                    "Dorp",
-                    "Eemhaven",
-                    "Europoort",
-                    "Feijenoord",
-                    "Groot IJsselmonde",
-                    "Heijplaat",
-                    "Het Lage Land",
-                    "Hillegersberg Noord",
-                    "Hillegersberg Zuid",
-                    "Hillesluis",
-                    "Hoogvliet Noord",
-                    "Hoogvliet Zuid",
-                    "Katendrecht",
-                    "Kleinpolder",
-                    "Kop van Zuid",
-                    "Kop van Zuid - Entrepot",
-                    "Kralingen  West",
-                    "Kralingen Oost",
-                    "Kralingse Bos",
-                    "Kralingseveer",
-                    "Landzicht",
-                    "Liskwartier",
-                    "Lombardijen",
-                    "Maasvlakte",
-                    "Middelland",
-                    "Molenlaankwartier",
-                    "Nesselande",
-                    "Nieuw Crooswijk",
-                    "Nieuw Mathenesse",
-                    "Nieuwe Werk",
-                    "Nieuwe Westen",
-                    "Noord Kethel",
-                    "Noordereiland",
-                    "Noordzeeweg",
-                    "Ommoord",
-                    "Onbekend",
-                    "Oosterflank",
-                    "Oud Charlois",
-                    "Oud Crooswijk",
-                    "Oud IJsselmonde",
-                    "Oud Mathenesse",
-                    "Oude Noorden",
-                    "Oude Westen",
-                    "Overschie",
-                    "Pendrecht",
-                    "Pernis",
-                    "Prinsenland",
-                    "Provenierswijk",
-                    "Rijnpoort",
-                    "Rivium",
-                    "Rozenburg",
-                    "Rubroek",
-                    "s Gravenland",
-                    "Schiebroek",
-                    "Schiemond",
-                    "Schieveen",
-                    "Spaanse Polder",
-                    "Spangen",
-                    "Stadsdriehoek",
-                    "Strand en Duin",
-                    "Struisenburg",
-                    "Tarwewijk",
-                    "Terbregge",
-                    "Tussendijken",
-                    "Vondelingenplaat",
-                    "Vreewijk",
-                    "Waalhaven",
-                    "Waalhaven Zuid",
-                    "Wielewaal",
-                    "Witte Dorp",
-                    "Zestienhoven",
-                    "Zevenkamp",
-                    "Zuiderpark",
-                    "Zuidplein",
-                    "Zuidwijk"});
+                    "Agniesebuurt"});
 
         }
 
@@ -305,23 +123,23 @@ namespace FormsApp
         //ComboBox2 code, show chart 
         public void ChartExample3()
         {
-            this.chart2.Titles.Clear();
-            this.chart2.Series.Clear();
+            this.chart1.Titles.Clear();
+            this.chart1.Series.Clear();
 
             // Data arrays
             string[] seriesArray = { "Cat", "Dog", "Bird", "Monkey" };
             int[] pointsArray = { 2, 1, 7, 5 };
 
             // Set palette
-            this.chart2.Palette = ChartColorPalette.EarthTones;
+            this.chart1.Palette = ChartColorPalette.EarthTones;
 
             // Set title
-            this.chart2.Titles.Add("ComboBox2");
+            this.chart1.Titles.Add("ComboBox2");
 
             // Add series.
             for (int i = 0; i < seriesArray.Length; i++)
             {
-                Series series = this.chart2.Series.Add(seriesArray[i]);
+                Series series = this.chart1.Series.Add(seriesArray[i]);
                 series.Points.Add(pointsArray[i]);
             }
         }
@@ -329,23 +147,23 @@ namespace FormsApp
         //ComboBox2 code, show chart
         public void ChartExample4()
         {
-            this.chart2.Titles.Clear();
-            this.chart2.Series.Clear();
+            this.chart1.Titles.Clear();
+            this.chart1.Series.Clear();
 
             // Data arrays
             string[] seriesArray = { "Paling", "Makreel", "Snoek", "Goudvis" };
             int[] pointsArray = { 10, 3, 6, 1 };
 
             // Set palette
-            this.chart2.Palette = ChartColorPalette.Grayscale;
+            this.chart1.Palette = ChartColorPalette.Grayscale;
 
             // Set title
-            this.chart2.Titles.Add("ComboBox2");
+            this.chart1.Titles.Add("ComboBox2");
 
             // Add series.
             for (int i = 0; i < seriesArray.Length; i++)
             {
-                Series series = this.chart2.Series.Add(seriesArray[i]);
+                Series series = this.chart1.Series.Add(seriesArray[i]);
                 series.Points.Add(pointsArray[i]);
             }
         }
@@ -466,7 +284,6 @@ namespace FormsApp
                     break;
             }
         }
-
     }
 }
 
