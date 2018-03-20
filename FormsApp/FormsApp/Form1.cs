@@ -142,6 +142,11 @@ namespace FormsApp
                 Series series = this.chart1.Series.Add(seriesArray[i]);
                 series.Points.Add(pointsArray[i]);
             }
+            var series2 = new Series("Finance");
+
+            series2.ChartType = SeriesChartType.Line;
+            series2.Points.DataBindXY(new[] { 5, 7, 2, 1 }, new[] { 3, 5, 2, 1 });
+            chart1.Series.Add(series2);
         }
 
         //ComboBox2 code, show chart
@@ -151,22 +156,34 @@ namespace FormsApp
             this.chart1.Series.Clear();
 
             // Data arrays
-            string[] seriesArray = { "Paling", "Makreel", "Snoek", "Goudvis" };
-            int[] pointsArray = { 10, 3, 6, 1 };
+            //string[] seriesArray = { "Paling", "Makreel", "Snoek", "Goudvis" };
+            //int[] pointsArray = { 10, 3, 6, 1 };
 
-            // Set palette
-            this.chart1.Palette = ChartColorPalette.Grayscale;
+            //// Set palette
+            //this.chart1.Palette = ChartColorPalette.Grayscale;
 
-            // Set title
-            this.chart1.Titles.Add("ComboBox2");
+            //// Set title
+            //this.chart1.Titles.Add("ComboBox2");
 
-            // Add series.
-            for (int i = 0; i < seriesArray.Length; i++)
-            {
-                Series series = this.chart1.Series.Add(seriesArray[i]);
-                series.Points.Add(pointsArray[i]);
-            }
+            //// Add series.
+
+            //for (int i = 0; i < seriesArray.Length; i++)
+            //{
+
+            //    Series series = this.chart1.Series.Add(seriesArray[i]);
+            //    var series = new Series("Finance");
+
+            //    series.ChartType = SeriesChartType.Line;
+            //    series.Points.DataBindXY(new[] { 2001, 2002, 2003, 2004 }, new[] { 100, 200, 90, 150 });
+            //    series.Points.Add(series);
+            //}
+            var series = new Series("Finance");
+
+            series.ChartType = SeriesChartType.Line;
+            series.Points.DataBindXY(new[] { 2001, 2002, 2003, 2004 }, new[] { 100, 200, 90, 150 });
+            chart1.Series.Add(series);
         }
+
 
         //combobox1
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
