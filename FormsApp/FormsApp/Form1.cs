@@ -36,25 +36,25 @@ namespace FormsApp
             
             //FillChart();
         }
-
+        string statement = "SELECT* FROM migratie WHERE wijk = 'Feijenoord' AND jaar = '2010'";
         //connection with database
-        private void FillChart()
+        public void FillChart()
         {
 
-            //string connstring = "Server=127.0.0.1; port=5432; User Id=postgres; Password=hallo; Database=test;";
-            //NpgsqlConnection con = new NpgsqlConnection(connstring);
-            //DataSet ds = new DataSet();
-            //con.Open();
-            //NpgsqlDataAdapter adapt = new NpgsqlDataAdapter("Select * from a", con);
-            //adapt.Fill(ds);
-            //this.chart1.DataSource = ds;
-            ////set the member of the chart data source used to data bind to the X-values of the series  
-            //this.chart1.Series["Series1"].XValueMember = "pos";
-            ////set the member columns of the chart data source used to data bind to the X-values of the series  
-            //this.chart1.Series["Series1"].YValueMembers = "pos";
-            //this.chart1.Titles.Add("Salary Chart");
-            ////close connection
-            //con.Close();
+            string connstring = "Server=127.0.0.1; port=5432; User Id=postgres; Password=hallo; Database=Database Project;";
+            NpgsqlConnection con = new NpgsqlConnection(connstring);
+            DataSet ds = new DataSet();
+            con.Open();
+            NpgsqlDataAdapter adapt = new NpgsqlDataAdapter(statement, con);
+            adapt.Fill(ds);
+            chart1.DataSource = ds;
+            //set the member of the chart data source used to data bind to the X-values of the series  
+            chart1.Series["Series1"].XValueMember = "jaar";
+            //set the member columns of the chart data source used to data bind to the X-values of the series  
+            chart1.Series["Series1"].YValueMembers = "emigratietotaal";
+            chart1.Titles.Add("Salary Chart");
+            //close connection
+            con.Close();
 
         }
 
@@ -64,6 +64,7 @@ namespace FormsApp
             this.comboBox1.Items.AddRange(new Object[] {
                     "Afrikaanderwijk",
                     "Agniesebuurt"});
+            
 
             this.comboBox2.DropDownWidth = 100;
             this.comboBox2.Items.AddRange(new object[] {
@@ -72,132 +73,134 @@ namespace FormsApp
 
         }
 
-        //ComboBox1 code, show chart
-        public void ChartExample()
-        {
-            this.chart1.Titles.Clear();
-            this.chart1.Series.Clear();
+        ////ComboBox1 code, show chart
+        //public void ChartExample()
+        //{
+        //    this.chart1.Titles.Clear();
+        //    this.chart1.Series.Clear();
 
-            // Data arrays
-            string[] seriesArray = { "Cat", "Dog", "Bird", "Monkey" };
-            int[] pointsArray = { 2, 1, 7, 5 };
+        //    // Data arrays
+        //    string[] seriesArray = { "Cat", "Dog", "Bird", "Monkey" };
+        //    int[] pointsArray = { 2, 1, 7, 5 };
 
-            // Set palette
-            this.chart1.Palette = ChartColorPalette.EarthTones;
+        //    // Set palette
+        //    this.chart1.Palette = ChartColorPalette.EarthTones;
 
-            // Set title
-            this.chart1.Titles.Add("ComboBox1");
+        //    // Set title
+        //    this.chart1.Titles.Add("ComboBox1");
 
-            // Add series.
-            for (int i = 0; i < seriesArray.Length; i++)
-            {
-                Series series = this.chart1.Series.Add(seriesArray[i]);
-                series.Points.Add(pointsArray[i]);
-            }
-        }
+        //    // Add series.
+        //    for (int i = 0; i < seriesArray.Length; i++)
+        //    {
+        //        Series series = this.chart1.Series.Add(seriesArray[i]);
+        //        series.Points.Add(pointsArray[i]);
+        //    }
+        //}
 
-        //ComboBox1 code, show chart
-        public void ChartExample2()
-        {
-            this.chart1.Titles.Clear();
-            this.chart1.Series.Clear();
+        ////ComboBox1 code, show chart
+        //public void ChartExample2()
+        //{
+        //    this.chart1.Titles.Clear();
+        //    this.chart1.Series.Clear();
 
-            // Data arrays
-            string[] seriesArray = { "Paling", "Makreel", "Snoek", "Goudvis" };
-            int[] pointsArray = { 10, 3, 6, 1 };
+        //    // Data arrays
+        //    string[] seriesArray = { "Paling", "Makreel", "Snoek", "Goudvis" };
+        //    int[] pointsArray = { 10, 3, 6, 1 };
 
-            // Set palette
-            this.chart1.Palette = ChartColorPalette.Grayscale;
+        //    // Set palette
+        //    this.chart1.Palette = ChartColorPalette.Grayscale;
 
-            // Set title
-            this.chart1.Titles.Add("Combobox1");
+        //    // Set title
+        //    this.chart1.Titles.Add("Combobox1");
 
-            // Add series.
-            for (int i = 0; i < seriesArray.Length; i++)
-            {
-                Series series = this.chart1.Series.Add(seriesArray[i]);
-                series.Points.Add(pointsArray[i]);
-            }
-        }
+        //    // Add series.
+        //    for (int i = 0; i < seriesArray.Length; i++)
+        //    {
+        //        Series series = this.chart1.Series.Add(seriesArray[i]);
+        //        series.Points.Add(pointsArray[i]);
+        //    }
+        //}
 
-        //ComboBox2 code, show chart 
-        public void ChartExample3()
-        {
-            this.chart1.Titles.Clear();
-            this.chart1.Series.Clear();
+        ////ComboBox2 code, show chart 
+        //public void ChartExample3()
+        //{
+        //    this.chart1.Titles.Clear();
+        //    this.chart1.Series.Clear();
 
-            // Data arrays
-            string[] seriesArray = { "Cat", "Dog", "Bird", "Monkey" };
-            int[] pointsArray = { 2, 1, 7, 5 };
+        //    // Data arrays
+        //    string[] seriesArray = { "Cat", "Dog", "Bird", "Monkey" };
+        //    int[] pointsArray = { 2, 1, 7, 5 };
 
-            // Set palette
-            this.chart1.Palette = ChartColorPalette.EarthTones;
+        //    // Set palette
+        //    this.chart1.Palette = ChartColorPalette.EarthTones;
 
-            // Set title
-            this.chart1.Titles.Add("ComboBox2");
+        //    // Set title
+        //    this.chart1.Titles.Add("ComboBox2");
 
-            // Add series.
-            for (int i = 0; i < seriesArray.Length; i++)
-            {
-                Series series = this.chart1.Series.Add(seriesArray[i]);
-                series.Points.Add(pointsArray[i]);
-            }
-            var series2 = new Series("Finance");
+        //    // Add series.
+        //    for (int i = 0; i < seriesArray.Length; i++)
+        //    {
+        //        Series series = this.chart1.Series.Add(seriesArray[i]);
+        //        series.Points.Add(pointsArray[i]);
+        //    }
+        //    var series2 = new Series("Finance");
 
-            series2.ChartType = SeriesChartType.Line;
-            series2.Points.DataBindXY(new[] { 7, 5, 2, 1 }, new[] { 3, 5, 2, 1 });
-            chart1.Series.Add(series2);
-        }
+        //    series2.ChartType = SeriesChartType.Line;
+        //    series2.Points.DataBindXY(new[] { 7, 5, 2, 1 }, new[] { 3, 5, 2, 1 });
+        //    chart1.Series.Add(series2);
+        //}
 
-        //ComboBox2 code, show chart
-        public void ChartExample4()
-        {
-            this.chart1.Titles.Clear();
-            this.chart1.Series.Clear();
+        ////ComboBox2 code, show chart
+        //public void ChartExample4()
+        //{
+        //    this.chart1.Titles.Clear();
+        //    this.chart1.Series.Clear();
 
-            // Data arrays
-            //string[] seriesArray = { "Paling", "Makreel", "Snoek", "Goudvis" };
-            //int[] pointsArray = { 10, 3, 6, 1 };
+        //    // Data arrays
+        //    //string[] seriesArray = { "Paling", "Makreel", "Snoek", "Goudvis" };
+        //    //int[] pointsArray = { 10, 3, 6, 1 };
 
-            //// Set palette
-            //this.chart1.Palette = ChartColorPalette.Grayscale;
+        //    //// Set palette
+        //    //this.chart1.Palette = ChartColorPalette.Grayscale;
 
-            //// Set title
-            //this.chart1.Titles.Add("ComboBox2");
+        //    //// Set title
+        //    //this.chart1.Titles.Add("ComboBox2");
 
-            //// Add series.
+        //    //// Add series.
 
-            //for (int i = 0; i < seriesArray.Length; i++)
-            //{
+        //    //for (int i = 0; i < seriesArray.Length; i++)
+        //    //{
 
-            //    Series series = this.chart1.Series.Add(seriesArray[i]);
-            //    var series = new Series("Finance");
+        //    //    Series series = this.chart1.Series.Add(seriesArray[i]);
+        //    //    var series = new Series("Finance");
 
-            //    series.ChartType = SeriesChartType.Line;
-            //    series.Points.DataBindXY(new[] { 2001, 2002, 2003, 2004 }, new[] { 100, 200, 90, 150 });
-            //    series.Points.Add(series);
-            //}
-            var series = new Series("Finance");
+        //    //    series.ChartType = SeriesChartType.Line;
+        //    //    series.Points.DataBindXY(new[] { 2001, 2002, 2003, 2004 }, new[] { 100, 200, 90, 150 });
+        //    //    series.Points.Add(series);
+        //    //}
+        //    var series = new Series("Finance");
 
-            series.ChartType = SeriesChartType.Line;
-            series.Points.DataBindXY(new[] { 7, 5, 2, 1 }, new[] { 3, 5, 2, 1 });
-            chart1.Series.Add(series);
-        }
+        //    series.ChartType = SeriesChartType.Line;
+        //    series.Points.DataBindXY(new[] { 7, 5, 2, 1 }, new[] { 3, 5, 2, 1 });
+        //    chart1.Series.Add(series);
+        //}
 
 
         //combobox1
+
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
             if (this.comboBox1.SelectedIndex == this.comboBox1.FindStringExact("Afrikaanderwijk"))
             {
                 //this.comboBox1.BackColor = System.Drawing.Color.Blue;
-                ChartExample();
+                //ChartExample();
+                FillChart();
             }
             if (this.comboBox1.SelectedIndex == this.comboBox1.FindStringExact("Agniesebuurt"))
             {
                 //this.comboBox1.BackColor = System.Drawing.Color.Red;
-                ChartExample2();
+                //ChartExample2();
             }
 
         }
@@ -208,19 +211,19 @@ namespace FormsApp
             if (this.comboBox2.SelectedIndex == this.comboBox2.FindStringExact("Afrikaanderwijk") && !checkBox1.Checked)
             {
                // this.comboBox2.BackColor = System.Drawing.Color.Red;
-                ChartExample3();
+                //ChartExample3();
 
             }
             if (this.comboBox2.SelectedIndex == this.comboBox2.FindStringExact("Afrikaanderwijk") && checkBox1.Checked)
             {
                // this.comboBox2.BackColor = System.Drawing.Color.Blue;
-                ChartExample4();
+               // ChartExample4();
 
             }
             if (this.comboBox2.SelectedIndex == this.comboBox2.FindStringExact("Agniesebuurt"))
             {
                 //this.comboBox2.BackColor = System.Drawing.Color.Red;
-                ChartExample4();
+               // ChartExample4();
             }
 
         }
@@ -232,19 +235,19 @@ namespace FormsApp
             if (this.comboBox2.SelectedIndex == this.comboBox2.FindStringExact("Afrikaanderwijk") && !checkBox1.Checked)
             {
                 //this.comboBox2.BackColor = System.Drawing.Color.Red;
-                ChartExample3();
+                //ChartExample3();
 
             }
             if (this.comboBox2.SelectedIndex == this.comboBox2.FindStringExact("Afrikaanderwijk") && checkBox1.Checked)
             {
                 //this.comboBox2.BackColor = System.Drawing.Color.Blue;
-                ChartExample4();
+                //ChartExample4();
 
             }
             if (this.comboBox2.SelectedIndex == this.comboBox2.FindStringExact("Agniesebuurt"))
             {
                 //this.comboBox2.BackColor = System.Drawing.Color.Red;
-                ChartExample4();
+                //ChartExample4();
             }
         }
 
