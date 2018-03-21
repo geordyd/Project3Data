@@ -261,9 +261,10 @@ namespace FormsApp
         {
             // for debugging only
             //textBox1.Text = trackBar1.Value.ToString();
-
+            
             SwitchSettings();
         }
+
         //Switchen van de map
 
         public void SwitchSettings()
