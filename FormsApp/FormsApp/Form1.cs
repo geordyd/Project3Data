@@ -34,19 +34,64 @@ namespace FormsApp
             TrackBarSettings();
             SwitchSettings();
             
-            FillChart();
+            //FillChart();
         }
         
         //connection with database
         public void FillChart()
         {
 
-        
             chart1.Titles.Clear();
             chart1.Series.Clear();
-            string selected = comboBox1.GetItemText(comboBox1.SelectedItem);
+            
+            //chart1.Series["Series1"].Points.Clear();
+
+
+            int jaar = trackBar1.Value;
+                string selected = comboBox1.GetItemText(comboBox1.SelectedItem);
+                //string statement = "SELECT * FROM migratie WHERE wijk = " + "'selected'";
+                string statement = "SELECT * FROM migratie WHERE wijk = '" + selected + "' AND jaar = '" + jaar + "' ";
+                //string statement = "SELECT * FROM migratie WHERE wijk = 'Rozenburg' AND jaar = 2010";
+                string connstring = "Server=127.0.0.1; port=5432; User Id=postgres; Password=hallo; Database=Database Project;";
+                NpgsqlConnection con = new NpgsqlConnection(connstring);
+                DataSet ds = new DataSet();
+                con.Open();
+                NpgsqlDataAdapter adapt = new NpgsqlDataAdapter(statement, con);
+                adapt.Fill(ds);
+                chart1.DataSource = ds;
+
+            if (chart1.Series.IsUniqueName("Series1"))
+            {
+                chart1.Series.Add("Series1");
+            }
+            if (chart1.Series.IsUniqueName("Series2"))
+            {
+                chart1.Series.Add("Series2");
+            }
+            //set the member of the chart data source used to data bind to the X-values of the series  
+
+            chart1.Series["Series1"].XValueMember = "jaar";
+            //set the member columns of the chart data source used to data bind to the X-values of the series  
+            chart1.Series["Series1"].YValueMembers = "emigratietotaal";
+                chart1.Titles.Add("Salary Chart");
+
+            
+            //close connection
+            con.Close();
+                textBox1.Text = selected;
+         
+        }
+
+        public void FillChart2()
+        {
+
+            chart1.Titles.Clear();
+            chart1.Series.Clear();
+            int jaar = trackBar1.Value;
+            string selected = comboBox2.GetItemText(comboBox2.SelectedItem);
             //string statement = "SELECT * FROM migratie WHERE wijk = " + "'selected'";
-            string statement = "SELECT * FROM migratie WHERE wijk = 'Rozenburg' AND jaar = 2010";
+            string statement = "SELECT * FROM migratie WHERE wijk = '" + selected + "' AND jaar = '" + jaar + "' ";
+            //string statement = "SELECT * FROM migratie WHERE wijk = 'Rozenburg' AND jaar = 2010";
             string connstring = "Server=127.0.0.1; port=5432; User Id=postgres; Password=hallo; Database=Database Project;";
             NpgsqlConnection con = new NpgsqlConnection(connstring);
             DataSet ds = new DataSet();
@@ -54,13 +99,22 @@ namespace FormsApp
             NpgsqlDataAdapter adapt = new NpgsqlDataAdapter(statement, con);
             adapt.Fill(ds);
             chart1.DataSource = ds;
-            chart1.Series.Add("Series1");
+            if (chart1.Series.IsUniqueName("Series1"))
+            {
+                chart1.Series.Add("Series1");
+            }
+            if (chart1.Series.IsUniqueName("Series2"))
+            {
+                chart1.Series.Add("Series2");
+            }
+
             //set the member of the chart data source used to data bind to the X-values of the series  
-            chart1.Series["Series1"].XValueMember = "jaar";
+
+            chart1.Series["Series2"].XValueMember = "jaar";
             //set the member columns of the chart data source used to data bind to the X-values of the series  
-            chart1.Series["Series1"].YValueMembers = "emigratietotaal";
+            chart1.Series["Series2"].YValueMembers = "emigratietotaal";
             chart1.Titles.Add("Salary Chart");
-            
+
 
             //close connection
             con.Close();
@@ -221,47 +275,57 @@ namespace FormsApp
 
 
         //combobox1
-
+        //Combobox1 code
         public void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (chart1.Series.IsUniqueName("Series1"))
+            {
+                
+                chart1.Series.Add("Series1");
+            }
+            if (chart1.Series.IsUniqueName("Series2"))
+            {
+                chart1.Series.Add("Series2");
+                
+            }
+            {
+                if (this.comboBox1.SelectedIndex == this.comboBox1.FindStringExact("Rozenburg"))
+                {
+                    //chart1.Titles.Clear();
+                    //chart1.Series.Clear();
+                    //this.comboBox1.BackColor = System.Drawing.Color.Blue;
+                    //ChartExample();
+                    FillChart();
 
-            if (this.comboBox1.SelectedIndex == this.comboBox1.FindStringExact("Rozenburg"))
+                }
+                if (this.comboBox1.SelectedIndex == this.comboBox1.FindStringExact("IJsselmonde"))
+                {
+                    //this.comboBox1.BackColor = System.Drawing.Color.Red;
+                    //ChartExample2();
+                    FillChart();
+
+                }
+            }
+        }
+
+        //combobox2 code
+        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (this.comboBox2.SelectedIndex == this.comboBox2.FindStringExact("Rozenburg"))
             {
                 //chart1.Titles.Clear();
                 //chart1.Series.Clear();
                 //this.comboBox1.BackColor = System.Drawing.Color.Blue;
                 //ChartExample();
-                FillChart();
-                
+                FillChart2();
+
+
             }
-            if (this.comboBox1.SelectedIndex == this.comboBox1.FindStringExact("IJsselmonde"))
+            if (this.comboBox2.SelectedIndex == this.comboBox2.FindStringExact("IJsselmonde"))
             {
                 //this.comboBox1.BackColor = System.Drawing.Color.Red;
                 //ChartExample2();
-                FillChart();
-            }
-
-        }
-
-        //combobox en checkbox combinatie
-        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (this.comboBox2.SelectedIndex == this.comboBox2.FindStringExact("Afrikaanderwijk") && !checkBox1.Checked)
-            {
-               // this.comboBox2.BackColor = System.Drawing.Color.Red;
-                //ChartExample3();
-
-            }
-            if (this.comboBox2.SelectedIndex == this.comboBox2.FindStringExact("Afrikaanderwijk") && checkBox1.Checked)
-            {
-               // this.comboBox2.BackColor = System.Drawing.Color.Blue;
-               // ChartExample4();
-
-            }
-            if (this.comboBox2.SelectedIndex == this.comboBox2.FindStringExact("Agniesebuurt"))
-            {
-                //this.comboBox2.BackColor = System.Drawing.Color.Red;
-               // ChartExample4();
+                FillChart2();
             }
 
         }
@@ -304,6 +368,7 @@ namespace FormsApp
             //textBox1.Text = trackBar1.Value.ToString();
             
             SwitchSettings();
+            FillChart();
         }
 
         //Switchen van de map
