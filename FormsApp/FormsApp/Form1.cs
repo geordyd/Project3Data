@@ -34,13 +34,19 @@ namespace FormsApp
             TrackBarSettings();
             SwitchSettings();
             
-            //FillChart();
+            FillChart();
         }
-        string statement = "SELECT* FROM migratie WHERE wijk = 'Feijenoord' AND jaar = '2010'";
+        
         //connection with database
         public void FillChart()
         {
 
+        
+            chart1.Titles.Clear();
+            chart1.Series.Clear();
+            string selected = comboBox1.GetItemText(comboBox1.SelectedItem);
+            //string statement = "SELECT * FROM migratie WHERE wijk = " + "'selected'";
+            string statement = "SELECT * FROM migratie WHERE wijk = 'Rozenburg' AND jaar = 2010";
             string connstring = "Server=127.0.0.1; port=5432; User Id=postgres; Password=hallo; Database=Database Project;";
             NpgsqlConnection con = new NpgsqlConnection(connstring);
             DataSet ds = new DataSet();
@@ -48,13 +54,17 @@ namespace FormsApp
             NpgsqlDataAdapter adapt = new NpgsqlDataAdapter(statement, con);
             adapt.Fill(ds);
             chart1.DataSource = ds;
+            chart1.Series.Add("Series1");
             //set the member of the chart data source used to data bind to the X-values of the series  
             chart1.Series["Series1"].XValueMember = "jaar";
             //set the member columns of the chart data source used to data bind to the X-values of the series  
             chart1.Series["Series1"].YValueMembers = "emigratietotaal";
             chart1.Titles.Add("Salary Chart");
+            
+
             //close connection
             con.Close();
+            textBox1.Text = selected;
 
         }
 
@@ -62,14 +72,38 @@ namespace FormsApp
         {
             this.comboBox1.DropDownWidth = 100;
             this.comboBox1.Items.AddRange(new Object[] {
-                    "Afrikaanderwijk",
-                    "Agniesebuurt"});
+                    "Rozenburg",
+                    "IJsselmonde",
+                    "Hoogvliet",
+                    "Noord",
+                    "Feijenoord",
+                    "Kralingen-Crooswijk",
+                    "Pernis",
+                    "Hillegersberg-Schiebroek",
+                    "Rotterdam Centrum",
+                    "Charlois",
+                    "Overschie",
+                    "Delfshaven",
+                    "Prins Alexander",
+                    "Hoek van Holland"});
             
 
             this.comboBox2.DropDownWidth = 100;
             this.comboBox2.Items.AddRange(new object[] {
-                    "Afrikaanderwijk",
-                    "Agniesebuurt"});
+                    "Rozenburg",
+                    "IJsselmonde",
+                    "Hoogvliet",
+                    "Noord",
+                    "Feijenoord",
+                    "Kralingen-Crooswijk",
+                    "Pernis",
+                    "Hillegersberg-Schiebroek",
+                    "Rotterdam Centrum",
+                    "Charlois",
+                    "Overschie",
+                    "Delfshaven",
+                    "Prins Alexander",
+                    "Hoek van Holland"});
 
         }
 
@@ -188,19 +222,23 @@ namespace FormsApp
 
         //combobox1
 
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        public void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
-            if (this.comboBox1.SelectedIndex == this.comboBox1.FindStringExact("Afrikaanderwijk"))
+            if (this.comboBox1.SelectedIndex == this.comboBox1.FindStringExact("Rozenburg"))
             {
+                //chart1.Titles.Clear();
+                //chart1.Series.Clear();
                 //this.comboBox1.BackColor = System.Drawing.Color.Blue;
                 //ChartExample();
                 FillChart();
+                
             }
-            if (this.comboBox1.SelectedIndex == this.comboBox1.FindStringExact("Agniesebuurt"))
+            if (this.comboBox1.SelectedIndex == this.comboBox1.FindStringExact("IJsselmonde"))
             {
                 //this.comboBox1.BackColor = System.Drawing.Color.Red;
                 //ChartExample2();
+                FillChart();
             }
 
         }
@@ -254,13 +292,13 @@ namespace FormsApp
         //show trackbar at start app
         public void TrackBarSettings()
         {
-            trackBar1.Minimum = 0;
+            trackBar1.Minimum = 2012;
 
-            trackBar1.Maximum = 4;
+            trackBar1.Maximum = 2015;
         }
 
         //show value trackbar in textbox when scrolling
-        private void trackBar1_Scroll(object sender, EventArgs e)
+        public void trackBar1_Scroll(object sender, EventArgs e)
         {
             // for debugging only
             //textBox1.Text = trackBar1.Value.ToString();
@@ -278,22 +316,22 @@ namespace FormsApp
 
             switch (caseSwitch)
             {
-                case 1:
+                case 2013:
                     textBox1.Text = "Map2";
                     pictureBox1.Image = img2;
                     break;
-                case 2:
-                    textBox1.Text = "Map2";
+                case 2014:
+                    textBox1.Text = "Map3";
                     pictureBox1.Image = img3;
                     break;
-                case 3:
-                    textBox1.Text = "Map3";
+                case 2015:
+                    textBox1.Text = "Map4";
                     pictureBox1.Image = img4;
                     break;
-                case 4:
-                    textBox1.Text = "Map4";
-                    pictureBox1.Image = img5;
-                    break;
+                //case 4:
+                //    textBox1.Text = "Map4";
+                //    pictureBox1.Image = img5;
+                //    break;
                 default:
                     textBox1.Text = "Map1";
                     pictureBox1.Image = img1;
