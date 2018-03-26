@@ -42,33 +42,47 @@ namespace FormsApp
 
 
 
-                //chart1.Series["Series1"].Points.Clear();
+            //chart1.Series["Series1"].Points.Clear();
+            chart1.Titles.Clear();
+            chart1.Series[0].Points.Clear();
+            if (comboBox1.GetItemText(comboBox1.SelectedItem) == comboBox2.GetItemText(comboBox2.SelectedItem))
+            {
+                chart1.Series[0].Name = "Series1";
+            }
+            else
+            {
+                chart1.Series[0].Name = comboBox1.GetItemText(comboBox1.SelectedItem);
+            }
 
-
-                int jaar = trackBar1.Value;
+            int jaar = trackBar1.Value;
                 string selected = comboBox1.GetItemText(comboBox1.SelectedItem);
                 //string statement = "SELECT * FROM migratie WHERE wijk = " + "'selected'";
                 string statement = "SELECT * FROM migratie WHERE wijk = '" + selected + "' AND jaar = '" + jaar + "' ";
                 //string statement = "SELECT * FROM migratie WHERE wijk = 'Rozenburg' AND jaar = 2010";
                 string connstring = "Server=127.0.0.1; port=5432; User Id=postgres; Password=hallo; Database=Database Project;";
                 NpgsqlConnection con = new NpgsqlConnection(connstring);
-                DataSet ds = new DataSet();
+            DataTable ds = new DataTable();
                 con.Open();
                 NpgsqlDataAdapter adapt = new NpgsqlDataAdapter(statement, con);
                 adapt.Fill(ds);
                 chart1.DataSource = ds;
 
+            foreach (DataRow row in ds.Rows)
+            {
+                //##Check## => Console.WriteLine(row[0] + " " + row[1]);
+                chart1.Series[0].Points.AddXY(row[1], row[2]);
+            }
 
-                //set the member of the chart data source used to data bind to the X-values of the series  
+            //set the member of the chart data source used to data bind to the X-values of the series  
 
-                chart1.Series["Series1"].XValueMember = "jaar";
-                //set the member columns of the chart data source used to data bind to the X-values of the series  
-                chart1.Series["Series1"].YValueMembers = "emigratietotaal";
-                chart1.Titles.Add("Salary Chart");
+            //chart1.Series["Series1"].Points.Add(jaar);
+            //    //set the member columns of the chart data source used to data bind to the X-values of the series  
+            //    chart1.Series["Series1"].YValueMembers = "emigratietotaal";
+            //    chart1.Titles.Add("Salary Chart");
 
 
-                //close connection
-                con.Close();
+            //close connection
+            con.Close();
                 textBox1.Text = selected;
             
         }
@@ -76,28 +90,41 @@ namespace FormsApp
         public void FillChart2()
         {
 
+            chart1.Titles.Clear();
+            chart1.Series[1].Points.Clear();
+            if (comboBox1.GetItemText(comboBox1.SelectedItem) == comboBox2.GetItemText(comboBox2.SelectedItem))
+            {
+                chart1.Series[1].Name = "Series2";
+            }
+            else
+            {
+                chart1.Series[1].Name = comboBox2.GetItemText(comboBox2.SelectedItem);
+            }
+            
 
-
-                int jaar = trackBar1.Value;
+            int jaar = trackBar1.Value;
                 string selected = comboBox2.GetItemText(comboBox2.SelectedItem);
                 //string statement = "SELECT * FROM migratie WHERE wijk = " + "'selected'";
                 string statement = "SELECT * FROM migratie WHERE wijk = '" + selected + "' AND jaar = '" + jaar + "' ";
                 //string statement = "SELECT * FROM migratie WHERE wijk = 'Rozenburg' AND jaar = 2010";
                 string connstring = "Server=127.0.0.1; port=5432; User Id=postgres; Password=hallo; Database=Database Project;";
                 NpgsqlConnection con = new NpgsqlConnection(connstring);
-                DataSet ds = new DataSet();
+                DataTable ds = new DataTable();
                 con.Open();
                 NpgsqlDataAdapter adapt = new NpgsqlDataAdapter(statement, con);
                 adapt.Fill(ds);
                 chart1.DataSource = ds;
 
-
-                //set the member of the chart data source used to data bind to the X-values of the series  
-
-                chart1.Series["Series2"].XValueMember = "jaar";
-                //set the member columns of the chart data source used to data bind to the X-values of the series  
-                chart1.Series["Series2"].YValueMembers = "emigratietotaal";
-                chart1.Titles.Add("Salary Chart");
+            //set the member of the chart data source used to data bind to the X-values of the series  
+            foreach (DataRow row in ds.Rows)
+            {
+                //##Check## => Console.WriteLine(row[0] + " " + row[1]);
+                chart1.Series[1].Points.AddXY(row[1], row[2]);
+            }
+            //chart1.Series["Series2"].Points.Add(jaar);
+            ////set the member columns of the chart data source used to data bind to the X-values of the series  
+            //chart1.Series["Series2"].Points.AddY("emigratietotaal");
+                //chart1.Titles.Add("Salary Chart");
 
 
                 //close connection
@@ -366,7 +393,8 @@ namespace FormsApp
             //textBox1.Text = trackBar1.Value.ToString();
             
             SwitchSettings();
-            
+            FillChart();
+            FillChart2();
         }
 
         //Switchen van de map
