@@ -58,7 +58,7 @@ namespace FormsApp
 
             string statement = "SELECT * FROM criminaliteit WHERE wijk = '" + selected + "' ";
 
-            string connstring = "Server=127.0.0.1; port=5432; User Id=postgres; Password=hallo; Database=Database Project;";
+            string connstring = "Server=localhost; port=5432; User Id=postgres; Password=123; Database=Project 3;";
             NpgsqlConnection con = new NpgsqlConnection(connstring);
             DataTable ds = new DataTable();
             con.Open();
@@ -106,7 +106,7 @@ namespace FormsApp
             //string statement = "SELECT * FROM migratie WHERE wijk = " + "'selected'";
             string statement = "SELECT * FROM criminaliteit WHERE wijk = '" + selected + "'  ";
             //string statement = "SELECT * FROM migratie WHERE wijk = 'Rozenburg' AND jaar = 2010";
-            string connstring = "Server=127.0.0.1; port=5432; User Id=postgres; Password=hallo; Database=Database Project;";
+            string connstring = "Server=127.0.0.1; port=5432; User Id=postgres; Password=123; Database=Project 3;";
             NpgsqlConnection con = new NpgsqlConnection(connstring);
             DataTable ds = new DataTable();
             con.Open();

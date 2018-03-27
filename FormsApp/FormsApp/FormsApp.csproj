@@ -106,5 +106,8 @@
   <ItemGroup>
     <None Include="Resources\Versie5.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Npgsql.dll" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
