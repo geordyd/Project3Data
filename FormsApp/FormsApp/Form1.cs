@@ -93,7 +93,7 @@ namespace FormsApp
             chart1.Series[1].Points.Clear();
             if (comboBox1.GetItemText(comboBox1.SelectedItem) == comboBox2.GetItemText(comboBox2.SelectedItem))
             {
-                chart1.Series[1].Name = comboBox1.GetItemText(comboBox1.SelectedItem) + " Kopie";
+                chart1.Series[1].Name = comboBox1.GetItemText(comboBox1.SelectedItem) + " Kopie2";
             }
             else
             {
