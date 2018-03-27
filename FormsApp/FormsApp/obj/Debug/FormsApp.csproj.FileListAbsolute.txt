@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 c:\users\geord\source\repos\FormsApp\FormsApp\obj\Debug\FormsApp.csprojResolveAssemblyReference.cache
 c:\users\geord\source\repos\FormsApp\FormsApp\obj\Debug\FormsApp.Properties.Resources.resources
 c:\users\geord\source\repos\FormsApp\FormsApp\obj\Debug\FormsApp.csproj.GenerateResource.Cache
@@ -35,3 +36,20 @@ C:\Users\geord\Desktop\MignonGeordyGame\Project3Data\FormsApp\FormsApp\obj\Debug
 C:\Users\geord\Desktop\MignonGeordyGame\Project3Data\FormsApp\FormsApp\obj\Debug\FormsApp.csproj.CoreCompileInputs.cache
 C:\Users\geord\Desktop\MignonGeordyGame\Project3Data\FormsApp\FormsApp\obj\Debug\FormsApp.exe
 C:\Users\geord\Desktop\MignonGeordyGame\Project3Data\FormsApp\FormsApp\obj\Debug\FormsApp.pdb
+=======
+C:\Users\Jered\Documents\GitKraken\Project3Data\Project3Data\FormsApp\FormsApp\obj\Debug\FormsApp.csprojResolveAssemblyReference.cache
+C:\Users\Jered\Documents\GitKraken\Project3Data\Project3Data\FormsApp\FormsApp\obj\Debug\FormsApp.Form1.resources
+C:\Users\Jered\Documents\GitKraken\Project3Data\Project3Data\FormsApp\FormsApp\obj\Debug\FormsApp.Properties.Resources.resources
+C:\Users\Jered\Documents\GitKraken\Project3Data\Project3Data\FormsApp\FormsApp\obj\Debug\FormsApp.csproj.GenerateResource.cache
+C:\Users\Jered\Documents\GitKraken\Project3Data\Project3Data\FormsApp\FormsApp\obj\Debug\FormsApp.csproj.CoreCompileInputs.cache
+>>>>>>> Stashed changes
+C:\Users\Jered\Documents\GitKraken\Project3Data\Project3Data\FormsApp\FormsApp\bin\Debug\FormsApp.exe.config
+C:\Users\Jered\Documents\GitKraken\Project3Data\Project3Data\FormsApp\FormsApp\bin\Debug\FormsApp.exe
+C:\Users\Jered\Documents\GitKraken\Project3Data\Project3Data\FormsApp\FormsApp\bin\Debug\FormsApp.pdb
+C:\Users\Jered\Documents\GitKraken\Project3Data\Project3Data\FormsApp\FormsApp\bin\Debug\Npgsql.dll
+C:\Users\Jered\Documents\GitKraken\Project3Data\Project3Data\FormsApp\FormsApp\bin\Debug\Npgsql.xml
+C:\Users\Jered\Documents\GitKraken\Project3Data\Project3Data\FormsApp\FormsApp\obj\Debug\FormsApp.csproj.CopyComplete
+C:\Users\Jered\Documents\GitKraken\Project3Data\Project3Data\FormsApp\FormsApp\obj\Debug\FormsApp.exe
+C:\Users\Jered\Documents\GitKraken\Project3Data\Project3Data\FormsApp\FormsApp\obj\Debug\FormsApp.pdb
+C:\Users\Jered\Documents\GitKraken\Project3Data\Project3Data\FormsApp\FormsApp\bin\Debug\System.Threading.Tasks.Extensions.dll
+C:\Users\Jered\Documents\GitKraken\Project3Data\Project3Data\FormsApp\FormsApp\bin\Debug\System.Threading.Tasks.Extensions.xml
