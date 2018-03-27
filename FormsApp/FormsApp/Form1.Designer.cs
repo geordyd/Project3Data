@@ -56,9 +56,11 @@
             this.chart1.Location = new System.Drawing.Point(724, 161);
             this.chart1.Name = "chart1";
             series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
             series1.Legend = "Legend1";
             series1.Name = "Series1";
             series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
             series2.Legend = "Legend1";
             series2.Name = "Series2";
             this.chart1.Series.Add(series1);
@@ -66,6 +68,7 @@
             this.chart1.Size = new System.Drawing.Size(486, 391);
             this.chart1.TabIndex = 0;
             this.chart1.Text = "chart1";
+            this.chart1.Click += new System.EventHandler(this.chart1_Click);
             // 
             // checkBox1
             // 
@@ -87,6 +90,7 @@
             this.checkBox2.TabIndex = 2;
             this.checkBox2.Text = "Criminaliteit";
             this.checkBox2.UseVisualStyleBackColor = true;
+            this.checkBox2.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged);
             // 
             // checkBox3
             // 
