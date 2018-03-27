@@ -85,7 +85,7 @@ namespace FormsApp
             //textBox1.Text = selected;
             
         }
-
+        public string statement;
         public void FillChart2()
         {
 
@@ -104,7 +104,15 @@ namespace FormsApp
             int jaar = trackBar1.Value;
             string selected = comboBox2.GetItemText(comboBox2.SelectedItem);
             //string statement = "SELECT * FROM migratie WHERE wijk = " + "'selected'";
-            string statement = "SELECT * FROM criminaliteit WHERE wijk = '" + selected + "'  ";
+            
+            if (checkBox2.Checked)
+            {
+                statement = "SELECT * FROM criminaliteit WHERE wijk = '" + selected + "'  ";
+            }
+            else if (checkBox1.Checked)
+            {
+                statement = "SELECT * FROM criminaliteit WHERE wijk = '" + selected + "'  ";
+            }
             //string statement = "SELECT * FROM migratie WHERE wijk = 'Rozenburg' AND jaar = 2010";
             string connstring = "Server=127.0.0.1; port=5432; User Id=postgres; Password=hallo; Database=Database Project;";
             NpgsqlConnection con = new NpgsqlConnection(connstring);
@@ -328,7 +336,8 @@ namespace FormsApp
         //combobox en checkbox combinatie
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
-
+            FillChart();
+            FillChart2();
             if (this.comboBox2.SelectedIndex == this.comboBox2.FindStringExact("Afrikaanderwijk") && !checkBox1.Checked)
             {
                 //this.comboBox2.BackColor = System.Drawing.Color.Red;
@@ -413,6 +422,8 @@ namespace FormsApp
                 //chart1.Series.Add("Series1");
                 chart1.ChartAreas[0].AxisX.Title = "Jaar";
                 chart1.ChartAreas[0].AxisY.Title = "Aantal Misdrijven";
+                FillChart();
+                FillChart2();
             }
         }
     }
