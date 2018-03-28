@@ -35,8 +35,8 @@ namespace FormsApp
             
             //FillChart();
         }
-        
         //connection with database
+        public string statement;
         public void FillChart()
         {
             chart1.Titles.Clear();
@@ -55,8 +55,23 @@ namespace FormsApp
 
             int jaar = trackBar1.Value;
             string selected = comboBox1.GetItemText(comboBox1.SelectedItem);
-
-            string statement = "SELECT * FROM criminaliteit WHERE wijk = '" + selected + "' ";
+            if (checkBox1.Checked)
+            {
+                statement = "SELECT * FROM criminaliteit WHERE wijk = '" + selected + "'  ";
+            }
+            else if (checkBox2.Checked)
+            {
+                statement = "SELECT * FROM criminaliteit WHERE wijk = '" + selected + "'  ";
+            }
+            else if (checkBox3.Checked)
+            {
+                statement = "SELECT * FROM criminaliteit WHERE wijk = '" + selected + "'  ";
+            }
+            else if (checkBox3.Checked)
+            {
+                statement = "SELECT * FROM criminaliteit WHERE wijk = '" + selected + "'  ";
+            }
+           
 
             string connstring = "Server=127.0.0.1; port=5432; User Id=postgres; Password=hallo; Database=Database Project;";
             NpgsqlConnection con = new NpgsqlConnection(connstring);
@@ -70,7 +85,22 @@ namespace FormsApp
             con.Close();
             foreach (DataRow row in ds.Rows)
             {
-                chart1.Series[0].Points.AddXY(row[2], row[1]);
+                if (checkBox1.Checked)
+                {
+                    chart1.Series[0].Points.AddXY(row[2], row[1]);
+                }
+                else if (checkBox2.Checked)
+                {
+                    chart1.Series[0].Points.AddXY(row[2], row[1]);
+                }
+                else if (checkBox3.Checked)
+                {
+                    chart1.Series[0].Points.AddXY(row[2], row[1]);
+                }
+                else if (checkBox3.Checked)
+                {
+                    chart1.Series[0].Points.AddXY(row[2], row[1]);
+                }
             }
 
             //set the member of the chart data source used to data bind to the X-values of the series  
@@ -85,7 +115,7 @@ namespace FormsApp
             //textBox1.Text = selected;
             
         }
-        public string statement;
+        
         public void FillChart2()
         {
 
@@ -105,14 +135,24 @@ namespace FormsApp
             string selected = comboBox2.GetItemText(comboBox2.SelectedItem);
             //string statement = "SELECT * FROM migratie WHERE wijk = " + "'selected'";
             
-            if (checkBox2.Checked)
+            //Statements per checkbox(subgroep)
+            if (checkBox1.Checked)
             {
                 statement = "SELECT * FROM criminaliteit WHERE wijk = '" + selected + "'  ";
             }
-            else if (checkBox1.Checked)
+            else if (checkBox2.Checked)
             {
                 statement = "SELECT * FROM criminaliteit WHERE wijk = '" + selected + "'  ";
             }
+            else if (checkBox3.Checked)
+            {
+                statement = "SELECT * FROM criminaliteit WHERE wijk = '" + selected + "'  ";
+            }
+            else if (checkBox3.Checked)
+            {
+                statement = "SELECT * FROM criminaliteit WHERE wijk = '" + selected + "'  ";
+            }
+
             //string statement = "SELECT * FROM migratie WHERE wijk = 'Rozenburg' AND jaar = 2010";
             string connstring = "Server=127.0.0.1; port=5432; User Id=postgres; Password=hallo; Database=Database Project;";
             NpgsqlConnection con = new NpgsqlConnection(connstring);
@@ -126,7 +166,22 @@ namespace FormsApp
             //set the member of the chart data source used to data bind to the X-values of the series  
             foreach (DataRow row in ds.Rows)
             {
-                chart1.Series[1].Points.AddXY(row[2], row[1]);
+                if (checkBox1.Checked)
+                {
+                    chart1.Series[1].Points.AddXY(row[2], row[1]);
+                }
+                else if (checkBox2.Checked)
+                {
+                    chart1.Series[1].Points.AddXY(row[2], row[1]);
+                }
+                else if (checkBox3.Checked)
+                {
+                    chart1.Series[1].Points.AddXY(row[2], row[1]);
+                }
+                else if (checkBox3.Checked)
+                {
+                    chart1.Series[1].Points.AddXY(row[2], row[1]);
+                }
             }
             //chart1.Series["Series2"].Points.Add(jaar);
             ////set the member columns of the chart data source used to data bind to the X-values of the series  
@@ -313,19 +368,16 @@ namespace FormsApp
         //Combobox1 code
         public void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(checkBox2.Checked)
+            if(checkBox2.Checked || checkBox3.Checked || checkBox4.Checked)
             {
                 FillChart();
             }
-            
-
-           
         }
 
         //combobox2 code
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (checkBox2.Checked)
+            if (checkBox2.Checked || checkBox3.Checked || checkBox4.Checked)
             {
                 FillChart2();
             }
@@ -333,29 +385,8 @@ namespace FormsApp
 
         }
 
-        //combobox en checkbox combinatie
-        private void checkBox1_CheckedChanged(object sender, EventArgs e)
-        {
-            FillChart();
-            FillChart2();
-            if (this.comboBox2.SelectedIndex == this.comboBox2.FindStringExact("Afrikaanderwijk") && !checkBox1.Checked)
-            {
-                //this.comboBox2.BackColor = System.Drawing.Color.Red;
-                //ChartExample3();
 
-            }
-            if (this.comboBox2.SelectedIndex == this.comboBox2.FindStringExact("Afrikaanderwijk") && checkBox1.Checked)
-            {
-                //this.comboBox2.BackColor = System.Drawing.Color.Blue;
-                //ChartExample4();
 
-            }
-            if (this.comboBox2.SelectedIndex == this.comboBox2.FindStringExact("Agniesebuurt"))
-            {
-                //this.comboBox2.BackColor = System.Drawing.Color.Red;
-                //ChartExample4();
-            }
-        }
 
         //show trackbar at start app
         public void TrackBarSettings()
@@ -368,12 +399,16 @@ namespace FormsApp
         //show value trackbar in textbox when scrolling
         public void trackBar1_Scroll(object sender, EventArgs e)
         {
-            // for debugging only
-            //textBox1.Text = trackBar1.Value.ToString();
-            
-            SwitchSettings();
-            FillChart();
-            FillChart2();
+            if (checkBox1.Checked)
+            {
+                SwitchSettings();
+            }
+
+            if (checkBox2.Checked || checkBox3.Checked || checkBox4.Checked)
+            {
+                FillChart();
+                FillChart2();
+            }
         }
 
         //Switchen van de map
@@ -413,6 +448,22 @@ namespace FormsApp
 
         }
 
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox1.Checked)
+            {
+                checkBox2.AutoCheck = false;
+                checkBox3.AutoCheck = false;
+                checkBox4.AutoCheck = false;
+            }
+            else
+            {
+                checkBox2.AutoCheck = true;
+                checkBox3.AutoCheck = true;
+                checkBox4.AutoCheck = true;
+            }
+        }
+
         private void checkBox2_CheckedChanged(object sender, EventArgs e)
         {
             if (checkBox2.Checked)
@@ -420,10 +471,62 @@ namespace FormsApp
                 //chart1.Series[0].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
                 //chart1.Series[1].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
                 //chart1.Series.Add("Series1");
+                trackBar1.Visible = false;
                 chart1.ChartAreas[0].AxisX.Title = "Jaar";
                 chart1.ChartAreas[0].AxisY.Title = "Aantal Misdrijven";
                 FillChart();
                 FillChart2();
+                checkBox1.AutoCheck = false;
+                checkBox3.AutoCheck = false;
+                checkBox4.AutoCheck = false;
+            }
+            else
+            {
+                trackBar1.Visible = true;
+                checkBox1.AutoCheck = true;
+                checkBox3.AutoCheck = true;
+                checkBox4.AutoCheck = true;
+            }
+        }
+
+        private void checkBox3_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox3.Checked)
+            {
+                chart1.ChartAreas[0].AxisX.Title = "Jaar";
+                chart1.ChartAreas[0].AxisY.Title = "Aantal Misdrijven";
+                FillChart();
+                FillChart2();
+                checkBox2.AutoCheck = false;
+                checkBox1.AutoCheck = false;
+                checkBox4.AutoCheck = false;
+            }
+            else
+            {
+                checkBox2.AutoCheck = true;
+                checkBox1.AutoCheck = true;
+                checkBox4.AutoCheck = true;
+            }
+        }
+
+        private void checkBox4_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox4.Checked)
+            {
+                chart1.ChartAreas[0].AxisX.Title = "Wijk";
+                chart1.ChartAreas[0].AxisY.Title = "Aantal Misdrijven";
+                FillChart();
+                FillChart2();
+                checkBox1.AutoCheck = false;
+                checkBox2.AutoCheck = false;
+                checkBox3.AutoCheck = false;
+            }
+            else
+            {
+                checkBox1.AutoCheck = true;
+                checkBox2.AutoCheck = true;
+                checkBox3.AutoCheck = true;
+
             }
         }
     }
