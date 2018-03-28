@@ -43,7 +43,11 @@ namespace FormsApp
         {
             chart1.Titles.Clear();
             chart1.Series[0].Points.Clear();
-            //chart1.Series[0].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Bar;
+            
+            chart1.Series[0].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Column;
+
+
+
             /*if (checkBox4.Checked)
                 {
                     ChartAxis secYAxis = new ChartAxis();
@@ -53,23 +57,23 @@ namespace FormsApp
                     chartControl1.secYAxis.OpposedPosition = true;
                 }
         */
-            
 
-            if (comboBox1.GetItemText(comboBox1.SelectedItem) == comboBox2.GetItemText(comboBox2.SelectedItem))
-            {
-                chart1.Series[0].Name = comboBox1.GetItemText(comboBox1.SelectedItem) + " Kopie";
-            }
-            else
-            {
-                chart1.Series[0].Name = comboBox1.GetItemText(comboBox1.SelectedItem);
-            }
+
+            //if (comboBox1.GetItemText(comboBox1.SelectedItem) == comboBox2.GetItemText(comboBox2.SelectedItem))
+            //{
+            //    chart1.Series[0].Name = comboBox1.GetItemText(comboBox1.SelectedItem) + " Kopie";
+            //}
+            //else
+            //{
+            //    chart1.Series[0].Name = comboBox1.GetItemText(comboBox1.SelectedItem);
+            //}
 
             int jaar = trackBar1.Value;
             string selected = comboBox1.GetItemText(comboBox1.SelectedItem);
 
-            string statement = "SELECT distinct leeftijd.wijk, leeftijd.gem_leeftijd, inkomen.gemiddeld_inkomen FROM leeftijd, inkomen WHERE leeftijd.wijk = inkomen.wijk and leeftijd.wijk ='" + selected + "' and leeftijd.jaar = 2012" + "";
+            string statement = "SELECT DISTINCT leeftijd.wijk, leeftijd.gem_leeftijd, leeftijd.jaar, inkomen.gemiddeld_inkomen FROM leeftijd, inkomen WHERE leeftijd.jaar = inkomen.jaar AND leeftijd.wijk = inkomen.wijk AND leeftijd.wijk ='" + selected + "' and inkomen.jaar =" + jaar ;
 
-            string connstring = "Server=127.0.0.1; port=5432; User Id=postgres; Password=i=2awa21ng; Database=Project3;";
+            string connstring = "Server=127.0.0.1; port=5432; User Id=postgres; Password=hallo; Database=Database Project;";
             NpgsqlConnection con = new NpgsqlConnection(connstring);
             DataTable ds = new DataTable();
             con.Open();
@@ -81,7 +85,8 @@ namespace FormsApp
             con.Close();
             foreach (DataRow row in ds.Rows)
             {
-                chart1.Series[0].Points.AddXY(row[0], row[1]);
+                chart1.Series[0].Points.AddXY(row[0],row[3]);
+                chart1.Series[1].Points.AddXY(row[0], row[1]);
                 //chart1.ChartAreas["ChartArea1"].AxisY2.Enabled = AxisEnabled.True;
                 //chart1.Series[0].YAxisType = AxisType.Secondary;
             }
@@ -103,26 +108,26 @@ namespace FormsApp
         {
 
             chart1.Titles.Clear();
-            chart1.Series[1].Points.Clear();
-            //chart1.Series[0].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Bar;
-            chart1.ChartAreas[0].AxisY2.Enabled = AxisEnabled.True;
-            chart1.Series[1].YAxisType = AxisType.Secondary;
-            if (comboBox1.GetItemText(comboBox1.SelectedItem) == comboBox2.GetItemText(comboBox2.SelectedItem))
-            {
-                chart1.Series[1].Name = comboBox1.GetItemText(comboBox1.SelectedItem) + " Kopie2";
-            }
-            else
-            {
-                chart1.Series[1].Name = comboBox2.GetItemText(comboBox2.SelectedItem);
-            }
             
+            chart1.Series[1].Points.Clear();
+
+            chart1.Series[1].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Column;
+            //if (comboBox1.GetItemText(comboBox1.SelectedItem) == comboBox2.GetItemText(comboBox2.SelectedItem))
+            //{
+            //    chart1.Series[1].Name = comboBox1.GetItemText(comboBox1.SelectedItem) + " Kopie2";
+            //}
+            //else
+            //{
+            //    chart1.Series[1].Name = comboBox2.GetItemText(comboBox2.SelectedItem);
+            //}
+
 
             int jaar = trackBar1.Value;
             string selected = comboBox2.GetItemText(comboBox2.SelectedItem);
             //string statement = "SELECT * FROM migratie WHERE wijk = " + "'selected'";
-            string statement = "SELECT distinct leeftijd.wijk, leeftijd.gem_leeftijd, inkomen.gemiddeld_inkomen FROM leeftijd, inkomen WHERE leeftijd.wijk = inkomen.wijk and leeftijd.wijk ='" + selected + "' and leeftijd.jaar = 2012" + "";
+            string statement = "SELECT DISTINCT leeftijd.wijk, leeftijd.gem_leeftijd, leeftijd.jaar, inkomen.gemiddeld_inkomen FROM leeftijd, inkomen WHERE leeftijd.jaar = inkomen.jaar AND leeftijd.wijk = inkomen.wijk AND leeftijd.wijk ='" + selected + "' and inkomen.jaar =" + jaar;
             //string statement = "SELECT * FROM migratie WHERE wijk = 'Rozenburg' AND jaar = 2010";
-            string connstring = "Server=127.0.0.1; port=5432; User Id=postgres; Password=i=2awa21ng; Database=Project3;";
+            string connstring = "Server=127.0.0.1; port=5432; User Id=postgres; Password=hallo; Database=Database Project";
             NpgsqlConnection con = new NpgsqlConnection(connstring);
             DataTable ds = new DataTable();
             con.Open();
@@ -134,7 +139,9 @@ namespace FormsApp
             //set the member of the chart data source used to data bind to the X-values of the series  
             foreach (DataRow row in ds.Rows)
             {
+                chart1.Series[0].Points.AddXY(row[0], row[3]);
                 chart1.Series[1].Points.AddXY(row[0], row[1]);
+                //chart1.Series[1].Points.AddXYchart1.Series[1].Points.AddXY(row[0], row[1]);row[0], row[1]);
                 //chart1.ChartAreas["ChartArea1"].AxisY2.Enabled = AxisEnabled.True;
                 //chart1.Series[1].YAxisType = AxisType.Secondary;
             }
@@ -325,14 +332,7 @@ namespace FormsApp
         //Combobox1 code
         public void comboBox1_SelectedIndexChanged(object sender, EventArgs e) //keuze dropdown menu 1
         {
-            if (checkBox4.Checked)
-            {
-               foreach (Series series in chart1.Series)
-               {
-                    series.ChartType = SeriesChartType.Column;
-               }
-               FillChart2();
-            }
+
 
             //if(checkBox4.Checked){
                 //FillChart3();
@@ -451,11 +451,16 @@ namespace FormsApp
         {
             if (checkBox4.Checked)
             {
-                foreach (Series series in chart1.Series)
-                {
-                    series.ChartType = SeriesChartType.Column;
-                }
-                
+                //chart1.Series[0].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.StackedColumn;
+                //chart1.Series[1].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.StackedColumn;
+                chart1.Series[0].Name = "gem inkomen";
+                chart1.Series[1].Name = "gem leeftijd";
+                chart1.ChartAreas[0].AxisY2.Enabled = AxisEnabled.True;
+                chart1.Series[1].XAxisType = AxisType.Primary;
+                chart1.Series[1].YAxisType = AxisType.Secondary;
+
+
+
             }
         }
     }
