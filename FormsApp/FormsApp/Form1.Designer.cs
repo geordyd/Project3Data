@@ -61,6 +61,7 @@
             series1.Name = "Series1";
             series2.ChartArea = "ChartArea1";
             series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series2.CustomProperties = "LabelStyle=BottomRight";
             series2.Legend = "Legend1";
             series2.Name = "Series2";
             this.chart1.Series.Add(series1);

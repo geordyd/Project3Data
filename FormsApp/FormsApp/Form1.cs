@@ -32,7 +32,8 @@ namespace FormsApp
             ComboBoxSettings();
             TrackBarSettings();
             SwitchSettings();
-            
+
+
             //FillChart();
         }
         
@@ -43,7 +44,7 @@ namespace FormsApp
         {
             chart1.Titles.Clear();
             chart1.Series[0].Points.Clear();
-            
+
             chart1.Series[0].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Column;
 
 
@@ -85,10 +86,12 @@ namespace FormsApp
             con.Close();
             foreach (DataRow row in ds.Rows)
             {
-                chart1.Series[0].Points.AddXY(row[0],row[3]);
+
+
+                chart1.Series[0].Points.AddXY(row[0], row[3]);
                 chart1.Series[1].Points.AddXY(row[0], row[1]);
-                //chart1.ChartAreas["ChartArea1"].AxisY2.Enabled = AxisEnabled.True;
-                //chart1.Series[0].YAxisType = AxisType.Secondary;
+
+
             }
 
             //set the member of the chart data source used to data bind to the X-values of the series  
@@ -101,7 +104,7 @@ namespace FormsApp
 
 
             //textBox1.Text = selected;
-            
+
         }
 
         public void FillChart2()
@@ -139,8 +142,15 @@ namespace FormsApp
             //set the member of the chart data source used to data bind to the X-values of the series  
             foreach (DataRow row in ds.Rows)
             {
+
                 chart1.Series[0].Points.AddXY(row[0], row[3]);
                 chart1.Series[1].Points.AddXY(row[0], row[1]);
+                //chart1.Series[1].Points.AddXY(row[0], row[1]);
+                //chart1.Series[1].Points.AddXY(row[0], row[1]);
+
+
+
+
                 //chart1.Series[1].Points.AddXYchart1.Series[1].Points.AddXY(row[0], row[1]);row[0], row[1]);
                 //chart1.ChartAreas["ChartArea1"].AxisY2.Enabled = AxisEnabled.True;
                 //chart1.Series[1].YAxisType = AxisType.Secondary;
@@ -153,6 +163,7 @@ namespace FormsApp
             textBox1.Text = selected;
             
         }
+
 
         
 
@@ -453,16 +464,21 @@ namespace FormsApp
             {
                 //chart1.Series[0].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.StackedColumn;
                 //chart1.Series[1].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.StackedColumn;
+                
                 chart1.Series[0].Name = "gem inkomen";
                 chart1.Series[1].Name = "gem leeftijd";
                 chart1.ChartAreas[0].AxisY2.Enabled = AxisEnabled.True;
-                chart1.Series[1].XAxisType = AxisType.Primary;
-                chart1.Series[1].YAxisType = AxisType.Secondary;
+
+                chart1.Series[0].YAxisType = AxisType.Secondary;
+
+
 
 
 
             }
+
         }
+
     }
 }
 
