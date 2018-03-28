@@ -36,13 +36,23 @@ namespace FormsApp
             //FillChart();
         }
         
+        
+
         //connection with database
         public void FillChart()
         {
             chart1.Titles.Clear();
             chart1.Series[0].Points.Clear();
             //chart1.Series[0].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Bar;
-
+            /*if (checkBox4.Checked)
+                {
+                    ChartAxis secYAxis = new ChartAxis();
+                    chartControl1.Axes.Add(secYAxis);
+                    chartControl1.Series[0].YAxis = secYAxis;
+                    chartControl1.Series[1].YAxis = secYAxis;
+                    chartControl1.secYAxis.OpposedPosition = true;
+                }
+        */
             
 
             if (comboBox1.GetItemText(comboBox1.SelectedItem) == comboBox2.GetItemText(comboBox2.SelectedItem))
@@ -57,7 +67,7 @@ namespace FormsApp
             int jaar = trackBar1.Value;
             string selected = comboBox1.GetItemText(comboBox1.SelectedItem);
 
-            string statement = "SELECT * FROM inkomen WHERE wijk = '" + selected + "'";
+            string statement = "SELECT distinct leeftijd.wijk, leeftijd.gem_leeftijd, inkomen.gemiddeld_inkomen FROM leeftijd, inkomen WHERE leeftijd.wijk = inkomen.wijk and leeftijd.wijk ='" + selected + "' and leeftijd.jaar = 2012" + "";
 
             string connstring = "Server=127.0.0.1; port=5432; User Id=postgres; Password=i=2awa21ng; Database=Project3;";
             NpgsqlConnection con = new NpgsqlConnection(connstring);
@@ -71,7 +81,9 @@ namespace FormsApp
             con.Close();
             foreach (DataRow row in ds.Rows)
             {
-                chart1.Series[0].Points.AddXY(row[2], row[1]);
+                chart1.Series[0].Points.AddXY(row[0], row[1]);
+                //chart1.ChartAreas["ChartArea1"].AxisY2.Enabled = AxisEnabled.True;
+                //chart1.Series[0].YAxisType = AxisType.Secondary;
             }
 
             //set the member of the chart data source used to data bind to the X-values of the series  
@@ -93,9 +105,11 @@ namespace FormsApp
             chart1.Titles.Clear();
             chart1.Series[1].Points.Clear();
             //chart1.Series[0].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Bar;
+            chart1.ChartAreas[0].AxisY2.Enabled = AxisEnabled.True;
+            chart1.Series[1].YAxisType = AxisType.Secondary;
             if (comboBox1.GetItemText(comboBox1.SelectedItem) == comboBox2.GetItemText(comboBox2.SelectedItem))
             {
-                chart1.Series[1].Name = comboBox1.GetItemText(comboBox1.SelectedItem) + " Kopie";
+                chart1.Series[1].Name = comboBox1.GetItemText(comboBox1.SelectedItem) + " Kopie2";
             }
             else
             {
@@ -106,7 +120,7 @@ namespace FormsApp
             int jaar = trackBar1.Value;
             string selected = comboBox2.GetItemText(comboBox2.SelectedItem);
             //string statement = "SELECT * FROM migratie WHERE wijk = " + "'selected'";
-            string statement = "SELECT * FROM inkomen WHERE wijk = '" + selected + "'";
+            string statement = "SELECT distinct leeftijd.wijk, leeftijd.gem_leeftijd, inkomen.gemiddeld_inkomen FROM leeftijd, inkomen WHERE leeftijd.wijk = inkomen.wijk and leeftijd.wijk ='" + selected + "' and leeftijd.jaar = 2012" + "";
             //string statement = "SELECT * FROM migratie WHERE wijk = 'Rozenburg' AND jaar = 2010";
             string connstring = "Server=127.0.0.1; port=5432; User Id=postgres; Password=i=2awa21ng; Database=Project3;";
             NpgsqlConnection con = new NpgsqlConnection(connstring);
@@ -120,7 +134,9 @@ namespace FormsApp
             //set the member of the chart data source used to data bind to the X-values of the series  
             foreach (DataRow row in ds.Rows)
             {
-                chart1.Series[1].Points.AddXY(row[2], row[1]);
+                chart1.Series[1].Points.AddXY(row[0], row[1]);
+                //chart1.ChartAreas["ChartArea1"].AxisY2.Enabled = AxisEnabled.True;
+                //chart1.Series[1].YAxisType = AxisType.Secondary;
             }
             //chart1.Series["Series2"].Points.Add(jaar);
             ////set the member columns of the chart data source used to data bind to the X-values of the series  
@@ -329,14 +345,7 @@ namespace FormsApp
         //combobox2 code
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e) //keuze dropdown menu 2
         {
-            if (checkBox4.Checked)
-            {
-               foreach (Series series in chart1.Series)
-                   {
-                    series.ChartType = SeriesChartType.Column;
-                    }
-                FillChart2();
-            }
+
 
             //if(checkBox4.Checked){
                 //FillChart4();
@@ -435,6 +444,18 @@ namespace FormsApp
                 //chart1.Series.Add("Series1");
                 chart1.ChartAreas[0].AxisX.Title = "Jaar";
                 chart1.ChartAreas[0].AxisY.Title = "Aantal Misdrijven";
+            }
+        }
+
+        private void checkBox4_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox4.Checked)
+            {
+                foreach (Series series in chart1.Series)
+                {
+                    series.ChartType = SeriesChartType.Column;
+                }
+                
             }
         }
     }

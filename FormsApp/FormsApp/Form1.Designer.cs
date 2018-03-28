@@ -111,6 +111,7 @@
             this.checkBox4.TabIndex = 4;
             this.checkBox4.Text = "Inkomen - Gemiddelde Leeftijd";
             this.checkBox4.UseVisualStyleBackColor = true;
+            this.checkBox4.CheckedChanged += new System.EventHandler(this.checkBox4_CheckedChanged);
             // 
             // comboBox1
             // 
