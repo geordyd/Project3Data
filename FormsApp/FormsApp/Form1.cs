@@ -33,7 +33,6 @@ namespace FormsApp
             TrackBarSettings();
             SwitchSettings();
 
-
             //FillChart();
         }
         
@@ -43,8 +42,8 @@ namespace FormsApp
         public void FillChart()
         {
             chart1.Titles.Clear();
-            chart1.Series[0].Points.Clear();
-
+            
+            
             chart1.Series[0].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Column;
 
 
@@ -86,10 +85,11 @@ namespace FormsApp
             con.Close();
             foreach (DataRow row in ds.Rows)
             {
-
-
+                chart1.Series[1].Points.Clear();
+                chart1.Series[0].Points.Clear();
                 chart1.Series[0].Points.AddXY(row[0], row[3]);
                 chart1.Series[1].Points.AddXY(row[0], row[1]);
+                //chart1.Series[2].Points.AddXY(row[0], row[1]);
 
 
             }
@@ -112,8 +112,8 @@ namespace FormsApp
 
             chart1.Titles.Clear();
             
-            chart1.Series[1].Points.Clear();
-
+            
+            
             chart1.Series[1].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Column;
             //if (comboBox1.GetItemText(comboBox1.SelectedItem) == comboBox2.GetItemText(comboBox2.SelectedItem))
             //{
@@ -145,6 +145,7 @@ namespace FormsApp
 
                 chart1.Series[0].Points.AddXY(row[0], row[3]);
                 chart1.Series[1].Points.AddXY(row[0], row[1]);
+                //chart1.Series[2].Points.AddXY(row[0], row[1]);
                 //chart1.Series[1].Points.AddXY(row[0], row[1]);
                 //chart1.Series[1].Points.AddXY(row[0], row[1]);
 
@@ -343,23 +344,25 @@ namespace FormsApp
         //Combobox1 code
         public void comboBox1_SelectedIndexChanged(object sender, EventArgs e) //keuze dropdown menu 1
         {
-
+            chart1.Series[1].Points.Clear();
+            chart1.Series[0].Points.Clear();
 
             //if(checkBox4.Checked){
-                //FillChart3();
+            //FillChart3();
             //}
-            
 
-           
+
+
         }
 
         //combobox2 code
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e) //keuze dropdown menu 2
         {
 
-
+            chart1.Series[1].Points.Clear();
+            chart1.Series[0].Points.Clear();
             //if(checkBox4.Checked){
-                //FillChart4();
+            //FillChart4();
             //}
 
 
@@ -467,9 +470,10 @@ namespace FormsApp
                 
                 chart1.Series[0].Name = "gem inkomen";
                 chart1.Series[1].Name = "gem leeftijd";
+
                 chart1.ChartAreas[0].AxisY2.Enabled = AxisEnabled.True;
 
-                chart1.Series[0].YAxisType = AxisType.Secondary;
+                chart1.Series[1].YAxisType = AxisType.Secondary;
 
 
 
