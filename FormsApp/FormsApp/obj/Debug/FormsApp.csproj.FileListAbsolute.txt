@@ -35,3 +35,17 @@ C:\Users\geord\Desktop\MignonGeordyGame\Project3Data\FormsApp\FormsApp\obj\Debug
 C:\Users\geord\Desktop\MignonGeordyGame\Project3Data\FormsApp\FormsApp\obj\Debug\FormsApp.csproj.CoreCompileInputs.cache
 C:\Users\geord\Desktop\MignonGeordyGame\Project3Data\FormsApp\FormsApp\obj\Debug\FormsApp.exe
 C:\Users\geord\Desktop\MignonGeordyGame\Project3Data\FormsApp\FormsApp\obj\Debug\FormsApp.pdb
+C:\Users\jordi\Documents\PROJECT3 DATA\Project3Data\FormsApp\FormsApp\obj\Debug\FormsApp.Form1.resources
+C:\Users\jordi\Documents\PROJECT3 DATA\Project3Data\FormsApp\FormsApp\obj\Debug\FormsApp.Properties.Resources.resources
+C:\Users\jordi\Documents\PROJECT3 DATA\Project3Data\FormsApp\FormsApp\obj\Debug\FormsApp.csproj.GenerateResource.Cache
+C:\Users\jordi\Documents\PROJECT3 DATA\Project3Data\FormsApp\FormsApp\obj\Debug\FormsApp.csproj.CoreCompileInputs.cache
+C:\Users\jordi\Documents\PROJECT3 DATA\Project3Data\FormsApp\FormsApp\obj\Debug\FormsApp.csprojResolveAssemblyReference.cache
+C:\Users\jordi\Documents\PROJECT3 DATA\Project3Data\FormsApp\FormsApp\bin\Debug\FormsApp.exe.config
+C:\Users\jordi\Documents\PROJECT3 DATA\Project3Data\FormsApp\FormsApp\bin\Debug\FormsApp.exe
+C:\Users\jordi\Documents\PROJECT3 DATA\Project3Data\FormsApp\FormsApp\bin\Debug\FormsApp.pdb
+C:\Users\jordi\Documents\PROJECT3 DATA\Project3Data\FormsApp\FormsApp\bin\Debug\Npgsql.dll
+C:\Users\jordi\Documents\PROJECT3 DATA\Project3Data\FormsApp\FormsApp\bin\Debug\Npgsql.xml
+C:\Users\jordi\Documents\PROJECT3 DATA\Project3Data\FormsApp\FormsApp\obj\Debug\FormsApp.exe
+C:\Users\jordi\Documents\PROJECT3 DATA\Project3Data\FormsApp\FormsApp\obj\Debug\FormsApp.pdb
+C:\Users\jordi\Documents\PROJECT3 DATA\Project3Data\FormsApp\FormsApp\bin\Debug\System.Threading.Tasks.Extensions.dll
+C:\Users\jordi\Documents\PROJECT3 DATA\Project3Data\FormsApp\FormsApp\bin\Debug\System.Threading.Tasks.Extensions.xml

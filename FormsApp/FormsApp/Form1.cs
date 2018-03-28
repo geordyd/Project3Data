@@ -41,6 +41,7 @@ namespace FormsApp
         {
             chart1.Titles.Clear();
             chart1.Series[0].Points.Clear();
+            //chart1.Series[0].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Bar;
 
             
 
@@ -56,9 +57,9 @@ namespace FormsApp
             int jaar = trackBar1.Value;
             string selected = comboBox1.GetItemText(comboBox1.SelectedItem);
 
-            string statement = "SELECT * FROM criminaliteit WHERE wijk = '" + selected + "' ";
+            string statement = "SELECT * FROM inkomen WHERE wijk = '" + selected + "'";
 
-            string connstring = "Server=127.0.0.1; port=5432; User Id=postgres; Password=hallo; Database=Database Project;";
+            string connstring = "Server=127.0.0.1; port=5432; User Id=postgres; Password=i=2awa21ng; Database=Project3;";
             NpgsqlConnection con = new NpgsqlConnection(connstring);
             DataTable ds = new DataTable();
             con.Open();
@@ -91,6 +92,7 @@ namespace FormsApp
 
             chart1.Titles.Clear();
             chart1.Series[1].Points.Clear();
+            //chart1.Series[0].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Bar;
             if (comboBox1.GetItemText(comboBox1.SelectedItem) == comboBox2.GetItemText(comboBox2.SelectedItem))
             {
                 chart1.Series[1].Name = comboBox1.GetItemText(comboBox1.SelectedItem) + " Kopie";
@@ -104,9 +106,9 @@ namespace FormsApp
             int jaar = trackBar1.Value;
             string selected = comboBox2.GetItemText(comboBox2.SelectedItem);
             //string statement = "SELECT * FROM migratie WHERE wijk = " + "'selected'";
-            string statement = "SELECT * FROM criminaliteit WHERE wijk = '" + selected + "'  ";
+            string statement = "SELECT * FROM inkomen WHERE wijk = '" + selected + "'";
             //string statement = "SELECT * FROM migratie WHERE wijk = 'Rozenburg' AND jaar = 2010";
-            string connstring = "Server=127.0.0.1; port=5432; User Id=postgres; Password=hallo; Database=Database Project;";
+            string connstring = "Server=127.0.0.1; port=5432; User Id=postgres; Password=i=2awa21ng; Database=Project3;";
             NpgsqlConnection con = new NpgsqlConnection(connstring);
             DataTable ds = new DataTable();
             con.Open();
@@ -128,6 +130,8 @@ namespace FormsApp
             textBox1.Text = selected;
             
         }
+
+        
 
         //public void AddSeries()
         //{
@@ -303,27 +307,45 @@ namespace FormsApp
 
         //combobox1
         //Combobox1 code
-        public void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        public void comboBox1_SelectedIndexChanged(object sender, EventArgs e) //keuze dropdown menu 1
         {
-            if(checkBox2.Checked)
+            if (checkBox4.Checked)
             {
-                FillChart();
+               foreach (Series series in chart1.Series)
+               {
+                    series.ChartType = SeriesChartType.Column;
+               }
+               FillChart2();
             }
+
+            //if(checkBox4.Checked){
+                //FillChart3();
+            //}
             
 
            
         }
 
         //combobox2 code
-        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e) //keuze dropdown menu 2
         {
-            if (checkBox2.Checked)
+            if (checkBox4.Checked)
             {
+               foreach (Series series in chart1.Series)
+                   {
+                    series.ChartType = SeriesChartType.Column;
+                    }
                 FillChart2();
             }
 
+            //if(checkBox4.Checked){
+                //FillChart4();
+            //}
+
 
         }
+
+
 
         //combobox en checkbox combinatie
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
@@ -376,7 +398,7 @@ namespace FormsApp
 
             switch (caseSwitch)
             {
-                case 2013:
+                case 2013: //2
                     textBox1.Text = "Map2";
                     pictureBox1.Image = img2;
                     break;
@@ -388,7 +410,7 @@ namespace FormsApp
                     textBox1.Text = "Map4";
                     pictureBox1.Image = img4;
                     break;
-                //case 4:
+                //case 4:+9
                 //    textBox1.Text = "Map4";
                 //    pictureBox1.Image = img5;
                 //    break;
