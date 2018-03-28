@@ -58,7 +58,7 @@ namespace FormsApp
 
             string statement = "SELECT * FROM criminaliteit WHERE wijk = '" + selected + "' ";
 
-            string connstring = "Server=127.0.0.1; port=5432; User Id=postgres; Password=hallo; Database=Database Project;";
+            string connstring = "Server=127.0.0.1; port=5432; User Id=postgres; Password=190696ro; Database=MegranjaDeInformática;";
             NpgsqlConnection con = new NpgsqlConnection(connstring);
             DataTable ds = new DataTable();
             con.Open();
@@ -93,7 +93,7 @@ namespace FormsApp
             chart1.Series[1].Points.Clear();
             if (comboBox1.GetItemText(comboBox1.SelectedItem) == comboBox2.GetItemText(comboBox2.SelectedItem))
             {
-                chart1.Series[1].Name = comboBox1.GetItemText(comboBox1.SelectedItem) + " Kopie";
+                chart1.Series[1].Name = comboBox1.GetItemText(comboBox1.SelectedItem) + " Copy";
             }
             else
             {
@@ -106,7 +106,7 @@ namespace FormsApp
             //string statement = "SELECT * FROM migratie WHERE wijk = " + "'selected'";
             string statement = "SELECT * FROM criminaliteit WHERE wijk = '" + selected + "'  ";
             //string statement = "SELECT * FROM migratie WHERE wijk = 'Rozenburg' AND jaar = 2010";
-            string connstring = "Server=127.0.0.1; port=5432; User Id=postgres; Password=hallo; Database=Database Project;";
+            string connstring = "Server=127.0.0.1; port=5432; User Id=postgres; Password=190696ro; Database=MegranjaDeInformática;";
             NpgsqlConnection con = new NpgsqlConnection(connstring);
             DataTable ds = new DataTable();
             con.Open();

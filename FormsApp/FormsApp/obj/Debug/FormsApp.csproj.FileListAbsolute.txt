@@ -35,3 +35,17 @@ C:\Users\geord\Desktop\MignonGeordyGame\Project3Data\FormsApp\FormsApp\obj\Debug
 C:\Users\geord\Desktop\MignonGeordyGame\Project3Data\FormsApp\FormsApp\obj\Debug\FormsApp.csproj.CoreCompileInputs.cache
 C:\Users\geord\Desktop\MignonGeordyGame\Project3Data\FormsApp\FormsApp\obj\Debug\FormsApp.exe
 C:\Users\geord\Desktop\MignonGeordyGame\Project3Data\FormsApp\FormsApp\obj\Debug\FormsApp.pdb
+D:\HR\Project Data\Github\Project3Data\FormsApp\FormsApp\obj\Debug\FormsApp.csprojResolveAssemblyReference.cache
+D:\HR\Project Data\Github\Project3Data\FormsApp\FormsApp\obj\Debug\FormsApp.Form1.resources
+D:\HR\Project Data\Github\Project3Data\FormsApp\FormsApp\obj\Debug\FormsApp.Properties.Resources.resources
+D:\HR\Project Data\Github\Project3Data\FormsApp\FormsApp\obj\Debug\FormsApp.csproj.GenerateResource.Cache
+D:\HR\Project Data\Github\Project3Data\FormsApp\FormsApp\obj\Debug\FormsApp.csproj.CoreCompileInputs.cache
+D:\HR\Project Data\Github\Project3Data\FormsApp\FormsApp\bin\Debug\FormsApp.exe.config
+D:\HR\Project Data\Github\Project3Data\FormsApp\FormsApp\bin\Debug\FormsApp.exe
+D:\HR\Project Data\Github\Project3Data\FormsApp\FormsApp\bin\Debug\FormsApp.pdb
+D:\HR\Project Data\Github\Project3Data\FormsApp\FormsApp\bin\Debug\Npgsql.dll
+D:\HR\Project Data\Github\Project3Data\FormsApp\FormsApp\bin\Debug\Npgsql.xml
+D:\HR\Project Data\Github\Project3Data\FormsApp\FormsApp\obj\Debug\FormsApp.exe
+D:\HR\Project Data\Github\Project3Data\FormsApp\FormsApp\obj\Debug\FormsApp.pdb
+D:\HR\Project Data\Github\Project3Data\FormsApp\FormsApp\bin\Debug\System.Threading.Tasks.Extensions.dll
+D:\HR\Project Data\Github\Project3Data\FormsApp\FormsApp\bin\Debug\System.Threading.Tasks.Extensions.xml
