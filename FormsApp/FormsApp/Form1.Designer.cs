@@ -101,6 +101,7 @@
             this.checkBox3.TabIndex = 3;
             this.checkBox3.Text = "Werkloosheid - Opleidingsniveau";
             this.checkBox3.UseVisualStyleBackColor = true;
+            this.checkBox3.CheckedChanged += new System.EventHandler(this.checkBox3_CheckedChanged);
             // 
             // checkBox4
             // 
