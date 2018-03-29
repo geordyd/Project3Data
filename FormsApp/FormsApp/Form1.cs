@@ -41,7 +41,7 @@ namespace FormsApp
         public void FillChart()
         {
             chart1.Titles.Clear();
-            chart1.Series[0].ChartType = SeriesChartType.Column;
+            chart1.Series[0].ChartType = SeriesChartType.StackedColumn100;
 
 
             int jaar = trackBar1.Value;
@@ -49,7 +49,7 @@ namespace FormsApp
 
             string statement = "SELECT * FROM opleidingsniveau WHERE wijk = '" + selected + "'and jaar = '" + jaar + "'";
 
-            string connstring = "Server=localhost; port=5432; User Id=postgres; Password=123; Database=Project 3;";
+            string connstring = "Server=localhost; port=5432; User Id=postgres; Password=hallo; Database=Database Project;";
             NpgsqlConnection con = new NpgsqlConnection(connstring);
             DataTable ds = new DataTable();
             con.Open();
@@ -63,8 +63,10 @@ namespace FormsApp
             {
                 chart1.Series[0].Points.Clear();
                 chart1.Series[1].Points.Clear();
+                chart1.Series[2].Points.Clear();
                 chart1.Series[0].Points.AddXY(row[0], row[1]);
-                chart1.Series[1].Points.AddXY(row[0], row[1]);
+                chart1.Series[1].Points.AddXY(row[0], row[2]);
+                chart1.Series[2].Points.AddXY(row[0], row[3]);
             }
 
 
@@ -86,16 +88,15 @@ namespace FormsApp
         public void FillChart2()
         {
             chart1.Titles.Clear();
-            chart1.Series[1].Points.Clear();
-            chart1.Series[1].ChartType = SeriesChartType.Column;
+            chart1.Series[1].ChartType = SeriesChartType.StackedColumn100;
 
 
             int jaar = trackBar1.Value;
-            string selected = comboBox1.GetItemText(comboBox1.SelectedItem);
+            string selected = comboBox2.GetItemText(comboBox2.SelectedItem);
 
             string statement = "SELECT * FROM opleidingsniveau WHERE wijk = '" + selected + "'and jaar = '" + jaar + "'";
 
-            string connstring = "Server=localhost; port=5432; User Id=postgres; Password=123; Database=Project 3;";
+            string connstring = "Server=localhost; port=5432; User Id=postgres; Password=hallo; Database=Database Project;";
             NpgsqlConnection con = new NpgsqlConnection(connstring);
             DataTable ds = new DataTable();
             con.Open();
@@ -108,7 +109,8 @@ namespace FormsApp
             foreach (DataRow row in ds.Rows)
             {
                 chart1.Series[0].Points.AddXY(row[0], row[1]);
-                chart1.Series[1].Points.AddXY(row[0], row[1]);
+                chart1.Series[1].Points.AddXY(row[0], row[2]);
+                chart1.Series[2].Points.AddXY(row[0], row[3]);
             }
 
 
@@ -594,9 +596,10 @@ namespace FormsApp
 
         private void checkBox3_CheckedChanged(object sender, EventArgs e)
         {
-            if (checkBox2.Checked) { 
+            if (checkBox3.Checked) {
+                chart1.Series.Add("Series3");
             chart1.ChartAreas[0].AxisY2.Enabled = AxisEnabled.True;
-            chart1.Series[1].YAxisType = AxisType.Secondary;
+            
         }
         }
 
