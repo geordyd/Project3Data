@@ -41,10 +41,10 @@ namespace FormsApp
         public void FillChart()
         {
             chart1.Titles.Clear();
-            chart1.Series[0].ChartType = SeriesChartType.StackedColumn100;
-            chart1.Series[1].ChartType = SeriesChartType.StackedColumn100;
-            chart1.Series[2].ChartType = SeriesChartType.StackedColumn100;
-            //chart1.Series[3].ChartType = SeriesChartType.StackedColumn;
+            chart1.Series[0].ChartType = SeriesChartType.StackedColumn;
+            chart1.Series[1].ChartType = SeriesChartType.StackedColumn;
+            chart1.Series[2].ChartType = SeriesChartType.StackedColumn;
+            chart1.Series[3].ChartType = SeriesChartType.StackedColumn;
 
 
             int jaar = trackBar1.Value;
@@ -98,10 +98,10 @@ namespace FormsApp
         public void FillChart2()
         {
             chart1.Titles.Clear();
-            chart1.Series[0].ChartType = SeriesChartType.StackedColumn100;
-            chart1.Series[1].ChartType = SeriesChartType.StackedColumn100;
-            chart1.Series[2].ChartType = SeriesChartType.StackedColumn100;
-            //chart1.Series[3].ChartType = SeriesChartType.StackedColumn;
+            chart1.Series[0].ChartType = SeriesChartType.StackedColumn;
+            chart1.Series[1].ChartType = SeriesChartType.StackedColumn;
+            chart1.Series[2].ChartType = SeriesChartType.StackedColumn;
+            chart1.Series[3].ChartType = SeriesChartType.StackedColumn;
 
             int jaar = trackBar1.Value;
             string selected = comboBox2.GetItemText(comboBox2.SelectedItem);
@@ -419,10 +419,11 @@ namespace FormsApp
                 chart1.Series[2].Color = Color.Blue;
                 chart1.Series[3].Color = Color.IndianRed;
                 chart1.ChartAreas[0].AxisY2.Enabled = AxisEnabled.True;
-                chart1.Series[0].YAxisType = AxisType.Primary;
-                chart1.Series[1].YAxisType = AxisType.Primary;
-                chart1.Series[2].YAxisType = AxisType.Primary;
-                chart1.Series[3].YAxisType = AxisType.Secondary;
+
+                chart1.Series[0].YAxisType = AxisType.Secondary;
+                chart1.Series[1].YAxisType = AxisType.Secondary;
+                chart1.Series[2].YAxisType = AxisType.Secondary;
+                //chart1.Series[3].YAxisType = AxisType.Secondary;
                 //chart1.Series[4].YAxisType = AxisType.Secondary;
 
             }
