@@ -44,14 +44,18 @@ namespace FormsApp
             chart1.Series[0].ChartType = SeriesChartType.StackedColumn100;
             chart1.Series[1].ChartType = SeriesChartType.StackedColumn100;
             chart1.Series[2].ChartType = SeriesChartType.StackedColumn100;
+            //chart1.Series[3].ChartType = SeriesChartType.StackedColumn;
 
 
             int jaar = trackBar1.Value;
             string selected = comboBox1.GetItemText(comboBox1.SelectedItem);
 
-            string statement = "SELECT * FROM opleidingsniveau WHERE wijk = '" + selected + "'and jaar = '" + jaar + "'";
+            string statement = "SELECT opleidingsniveau.wijk,laag_opgeleid_percentage,middelbaar_opgeleid_percentage,hoog_opgeleid_percentage,werkloos_percentage, " +
+                "opleidingsniveau.jaar FROM opleidingsniveau, werkloosheid WHERE opleidingsniveau.wijk = werkloosheid.wijk " +
+                "and opleidingsniveau.jaar = werkloosheid.jaar AND opleidingsniveau.wijk = '" + selected + "' and opleidingsniveau.jaar =" + jaar + "";
 
-            string connstring = "Server=localhost; port=5432; User Id=postgres; Password=123; Database=Project 3;";
+
+            string connstring = "Server=localhost; port=5432; User Id=postgres; Password=hallo; Database=Database Project;";
             NpgsqlConnection con = new NpgsqlConnection(connstring);
             DataTable ds = new DataTable();
             con.Open();
@@ -66,9 +70,13 @@ namespace FormsApp
                 chart1.Series[0].Points.Clear();
                 chart1.Series[1].Points.Clear();
                 chart1.Series[2].Points.Clear();
+                chart1.Series[3].Points.Clear();
+                //chart1.Series[4].Points.Clear();
                 chart1.Series[0].Points.AddXY(row[0], row[3]);
                 chart1.Series[1].Points.AddXY(row[0], row[2]);
                 chart1.Series[2].Points.AddXY(row[0], row[1]);
+                chart1.Series[3].Points.AddXY(row[0], row[4]);
+                //chart1.Series[4].Points.AddXY(row[0], 10);
             }
 
 
@@ -93,14 +101,16 @@ namespace FormsApp
             chart1.Series[0].ChartType = SeriesChartType.StackedColumn100;
             chart1.Series[1].ChartType = SeriesChartType.StackedColumn100;
             chart1.Series[2].ChartType = SeriesChartType.StackedColumn100;
-
+            //chart1.Series[3].ChartType = SeriesChartType.StackedColumn;
 
             int jaar = trackBar1.Value;
             string selected = comboBox2.GetItemText(comboBox2.SelectedItem);
 
-            string statement = "SELECT * FROM opleidingsniveau WHERE wijk = '" + selected + "'and jaar = '" + jaar + "'";
+            string statement = "SELECT opleidingsniveau.wijk,laag_opgeleid_percentage,middelbaar_opgeleid_percentage,hoog_opgeleid_percentage,werkloos_percentage, " +
+                "opleidingsniveau.jaar FROM opleidingsniveau, werkloosheid WHERE opleidingsniveau.wijk = werkloosheid.wijk " +
+                "and opleidingsniveau.jaar = werkloosheid.jaar AND opleidingsniveau.wijk = '" + selected + "' and opleidingsniveau.jaar =" + jaar + "";
 
-            string connstring = "Server=localhost; port=5432; User Id=postgres; Password=123; Database=Project 3;";
+            string connstring = "Server=localhost; port=5432; User Id=postgres; Password=hallo; Database=Database Project;";
             NpgsqlConnection con = new NpgsqlConnection(connstring);
             DataTable ds = new DataTable();
             con.Open();
@@ -115,6 +125,8 @@ namespace FormsApp
                 chart1.Series[0].Points.AddXY(row[0], row[3]);
                 chart1.Series[1].Points.AddXY(row[0], row[2]);
                 chart1.Series[2].Points.AddXY(row[0], row[1]);
+                chart1.Series[3].Points.AddXY(row[0], row[4]);
+                //chart1.Series[4].Points.AddXY(row[0], 15);
             }
 
 
@@ -291,6 +303,7 @@ namespace FormsApp
             chart1.Series[0].Points.Clear();
             chart1.Series[1].Points.Clear();
             chart1.Series[2].Points.Clear();
+            chart1.Series[3].Points.Clear();
         }
 
         //combobox2 code
@@ -299,6 +312,7 @@ namespace FormsApp
             chart1.Series[0].Points.Clear();
             chart1.Series[1].Points.Clear();
             chart1.Series[2].Points.Clear();
+            chart1.Series[3].Points.Clear();
         }
 
         //combobox en checkbox combinatie
@@ -400,10 +414,18 @@ namespace FormsApp
         {
             if (checkBox3.Checked) {
                 chart1.Series.Add("Series3");
+                chart1.Series.Add("Series4");
+                //chart1.Series.Add("Series5");
                 chart1.Series[2].Color = Color.Blue;
-            chart1.ChartAreas[0].AxisY2.Enabled = AxisEnabled.True;
-            
-        }
+                chart1.Series[3].Color = Color.IndianRed;
+                chart1.ChartAreas[0].AxisY2.Enabled = AxisEnabled.True;
+                chart1.Series[0].YAxisType = AxisType.Primary;
+                chart1.Series[1].YAxisType = AxisType.Primary;
+                chart1.Series[2].YAxisType = AxisType.Primary;
+                chart1.Series[3].YAxisType = AxisType.Secondary;
+                //chart1.Series[4].YAxisType = AxisType.Secondary;
+
+            }
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
