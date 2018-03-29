@@ -41,9 +41,53 @@ namespace FormsApp
         public void FillChart()
         {
             chart1.Titles.Clear();
-            chart1.Series[0].Points.Clear();
-            chart1.Series[0].ChartType = SeriesChartType.StackedColumn100;
-            chart1.Series[0].Name = "Laag opgeleid";
+            chart1.Series[0].ChartType = SeriesChartType.Column;
+
+
+            int jaar = trackBar1.Value;
+            string selected = comboBox1.GetItemText(comboBox1.SelectedItem);
+
+            string statement = "SELECT * FROM opleidingsniveau WHERE wijk = '" + selected + "'and jaar = '" + jaar + "'";
+
+            string connstring = "Server=localhost; port=5432; User Id=postgres; Password=123; Database=Project 3;";
+            NpgsqlConnection con = new NpgsqlConnection(connstring);
+            DataTable ds = new DataTable();
+            con.Open();
+            NpgsqlDataAdapter adapt = new NpgsqlDataAdapter(statement, con);
+            adapt.Fill(ds);
+            chart1.DataSource = ds;
+
+            //close connection
+            con.Close();
+            foreach (DataRow row in ds.Rows)
+            {
+                chart1.Series[0].Points.Clear();
+                chart1.Series[1].Points.Clear();
+                chart1.Series[0].Points.AddXY(row[0], row[1]);
+                chart1.Series[1].Points.AddXY(row[0], row[1]);
+            }
+
+
+
+            //set the member of the chart data source used to data bind to the X-values of the series  
+
+            //chart1.Series["Series1"].Points.Add(jaar);
+            //    //set the member columns of the chart data source used to data bind to the X-values of the series  
+            //    chart1.Series["Series1"].YValueMembers = "emigratietotaal";
+            //    chart1.Titles.Add("Salary Chart");
+
+
+
+            textBox1.Text = selected;
+
+        }
+
+
+        public void FillChart2()
+        {
+            chart1.Titles.Clear();
+            chart1.Series[1].Points.Clear();
+            chart1.Series[1].ChartType = SeriesChartType.Column;
 
 
             int jaar = trackBar1.Value;
@@ -64,51 +108,7 @@ namespace FormsApp
             foreach (DataRow row in ds.Rows)
             {
                 chart1.Series[0].Points.AddXY(row[0], row[1]);
-            }
-
-
-
-            //set the member of the chart data source used to data bind to the X-values of the series  
-
-            //chart1.Series["Series1"].Points.Add(jaar);
-            //    //set the member columns of the chart data source used to data bind to the X-values of the series  
-            //    chart1.Series["Series1"].YValueMembers = "emigratietotaal";
-            //    chart1.Titles.Add("Salary Chart");
-
-
-
-            textBox1.Text = selected;
-
-
-        }
-
-
-        public void FillChart2()
-        {
-            chart1.Titles.Clear();
-            chart1.Series[1].Points.Clear();
-            chart1.Series[1].ChartType = SeriesChartType.StackedColumn100;
-            chart1.Series[1].Name = "Midden opgeleid";
-
-
-            int jaar = trackBar1.Value;
-            string selected = comboBox1.GetItemText(comboBox1.SelectedItem);
-
-            string statement = "SELECT * FROM opleidingsniveau WHERE wijk = '" + selected + "'and jaar = '" + jaar + "'";
-
-            string connstring = "Server=localhost; port=5432; User Id=postgres; Password=123; Database=Project 3;";
-            NpgsqlConnection con = new NpgsqlConnection(connstring);
-            DataTable ds = new DataTable();
-            con.Open();
-            NpgsqlDataAdapter adapt = new NpgsqlDataAdapter(statement, con);
-            adapt.Fill(ds);
-            chart1.DataSource = ds;
-
-            //close connection
-            con.Close();
-            foreach (DataRow row in ds.Rows)
-            {
-                chart1.Series[1].Points.AddXY(row[0], row[2]);
+                chart1.Series[1].Points.AddXY(row[0], row[1]);
             }
 
 
@@ -125,210 +125,210 @@ namespace FormsApp
 
 
         }
-        public void FillChart3()
-        {
-            chart1.Titles.Clear();
-            chart1.Series[2].Points.Clear();
-            chart1.Series[2].ChartType = SeriesChartType.StackedColumn100;
-            chart1.Series[2].Name = "Hoog opgeleid";
+        //public void FillChart3()
+        //{
+        //    chart1.Titles.Clear();
+        //    chart1.Series[2].Points.Clear();
+        //    chart1.Series[2].ChartType = SeriesChartType.StackedColumn100;
+        //    chart1.Series[2].Name = "Hoog opgeleid";
 
 
-            int jaar = trackBar1.Value;
-            string selected = comboBox1.GetItemText(comboBox1.SelectedItem);
+        //    int jaar = trackBar1.Value;
+        //    string selected = comboBox1.GetItemText(comboBox1.SelectedItem);
 
-            string statement = "SELECT * FROM opleidingsniveau WHERE wijk = '" + selected + "'and jaar = '" + jaar + "'";
+        //    string statement = "SELECT * FROM opleidingsniveau WHERE wijk = '" + selected + "'and jaar = '" + jaar + "'";
 
-            string connstring = "Server=localhost; port=5432; User Id=postgres; Password=123; Database=Project 3;";
-            NpgsqlConnection con = new NpgsqlConnection(connstring);
-            DataTable ds = new DataTable();
-            con.Open();
-            NpgsqlDataAdapter adapt = new NpgsqlDataAdapter(statement, con);
-            adapt.Fill(ds);
-            chart1.DataSource = ds;
+        //    string connstring = "Server=localhost; port=5432; User Id=postgres; Password=123; Database=Project 3;";
+        //    NpgsqlConnection con = new NpgsqlConnection(connstring);
+        //    DataTable ds = new DataTable();
+        //    con.Open();
+        //    NpgsqlDataAdapter adapt = new NpgsqlDataAdapter(statement, con);
+        //    adapt.Fill(ds);
+        //    chart1.DataSource = ds;
 
-            //close connection
-            con.Close();
-            foreach (DataRow row in ds.Rows)
-            {
-                chart1.Series[2].Points.AddXY(row[0], row[3]);
-            }
-
-
-            //set the member of the chart data source used to data bind to the X - values of the series
-
-            //chart1.Series["Series1"].Points.Add(jaar);
-            ////set the member columns of the chart data source used to data bind to the X-values of the series  
-            //chart1.Series["Series1"].YValueMembers = "emigratietotaal";
-            //chart1.Titles.Add("Salary Chart");
+        //    //close connection
+        //    con.Close();
+        //    foreach (DataRow row in ds.Rows)
+        //    {
+        //        chart1.Series[2].Points.AddXY(row[0], row[3]);
+        //    }
 
 
+        //    //set the member of the chart data source used to data bind to the X - values of the series
 
-            textBox1.Text = selected;
-
-
-        }
-
-        public void FillChart4()
-        {
-
-            chart1.Titles.Clear();
-            chart1.Series[3].Points.Clear();
-            chart1.Series[3].ChartType = SeriesChartType.StackedColumn100;
-            chart1.ChartAreas[0].AxisY2.Enabled = AxisEnabled.True;
-            chart1.Series[3].YAxisType = AxisType.Secondary;
-            chart1.Series[3].Name = "Laag opgeleid1";
-
-            //if (comboBox1.GetItemText(comboBox1.SelectedItem) == comboBox2.GetItemText(comboBox2.SelectedItem))
-            //{
-            //    chart1.Series[1].Name = comboBox1.GetItemText(comboBox1.SelectedItem) + " Copy";
-            //}
-            //else
-            //{
-            //    chart1.Series[1].Name = comboBox2.GetItemText(comboBox2.SelectedItem);
-            //}
+        //    //chart1.Series["Series1"].Points.Add(jaar);
+        //    ////set the member columns of the chart data source used to data bind to the X-values of the series  
+        //    //chart1.Series["Series1"].YValueMembers = "emigratietotaal";
+        //    //chart1.Titles.Add("Salary Chart");
 
 
-            int jaar = trackBar1.Value;
-            string selected = comboBox2.GetItemText(comboBox2.SelectedItem);
-            //string statement = "SELECT * FROM migratie WHERE wijk = " + "'selected'";
-            string statement = "SELECT * FROM Opleidingsniveau WHERE wijk = '" + selected + "'  and jaar = '" + jaar + "'" ;
-            //string statement = "SELECT * FROM migratie WHERE wijk = 'Rozenburg' AND jaar = 2010";
-            string connstring = "Server=127.0.0.1; port=5432; User Id=postgres; Password=123; Database=Project 3;";
-            NpgsqlConnection con = new NpgsqlConnection(connstring);
-            DataTable ds = new DataTable();
-            con.Open();
-            NpgsqlDataAdapter adapt = new NpgsqlDataAdapter(statement, con);
-            adapt.Fill(ds);
-            chart1.DataSource = ds;
-            //close connection
-            con.Close();
-            //set the member of the chart data source used to data bind to the X-values of the series  
-            foreach (DataRow row in ds.Rows)
-            {
-                chart1.Series[3].Points.AddXY(row[0], row[1]);
-            }
-            //chart1.Series["Series2"].Points.Add(jaar);
-            ////set the member columns of the chart data source used to data bind to the X-values of the series  
-            //chart1.Series["Series2"].Points.AddY("emigratietotaal");
-            //chart1.Titles.Add("Salary Chart");
 
-            textBox1.Text = selected;
+        //    textBox1.Text = selected;
+
+
+        //}
+
+        //public void FillChart4()
+        //{
+
+        //    chart1.Titles.Clear();
+        //    chart1.Series[3].Points.Clear();
+        //    chart1.Series[3].ChartType = SeriesChartType.StackedColumn100;
+        //    chart1.ChartAreas[0].AxisY2.Enabled = AxisEnabled.True;
+        //    chart1.Series[3].YAxisType = AxisType.Secondary;
+        //    chart1.Series[3].Name = "Laag opgeleid1";
+
+        //    //if (comboBox1.GetItemText(comboBox1.SelectedItem) == comboBox2.GetItemText(comboBox2.SelectedItem))
+        //    //{
+        //    //    chart1.Series[1].Name = comboBox1.GetItemText(comboBox1.SelectedItem) + " Copy";
+        //    //}
+        //    //else
+        //    //{
+        //    //    chart1.Series[1].Name = comboBox2.GetItemText(comboBox2.SelectedItem);
+        //    //}
+
+
+        //    int jaar = trackBar1.Value;
+        //    string selected = comboBox2.GetItemText(comboBox2.SelectedItem);
+        //    //string statement = "SELECT * FROM migratie WHERE wijk = " + "'selected'";
+        //    string statement = "SELECT * FROM Opleidingsniveau WHERE wijk = '" + selected + "'  and jaar = '" + jaar + "'" ;
+        //    //string statement = "SELECT * FROM migratie WHERE wijk = 'Rozenburg' AND jaar = 2010";
+        //    string connstring = "Server=127.0.0.1; port=5432; User Id=postgres; Password=123; Database=Project 3;";
+        //    NpgsqlConnection con = new NpgsqlConnection(connstring);
+        //    DataTable ds = new DataTable();
+        //    con.Open();
+        //    NpgsqlDataAdapter adapt = new NpgsqlDataAdapter(statement, con);
+        //    adapt.Fill(ds);
+        //    chart1.DataSource = ds;
+        //    //close connection
+        //    con.Close();
+        //    //set the member of the chart data source used to data bind to the X-values of the series  
+        //    foreach (DataRow row in ds.Rows)
+        //    {
+        //        chart1.Series[3].Points.AddXY(row[0], row[1]);
+        //    }
+        //    //chart1.Series["Series2"].Points.Add(jaar);
+        //    ////set the member columns of the chart data source used to data bind to the X-values of the series  
+        //    //chart1.Series["Series2"].Points.AddY("emigratietotaal");
+        //    //chart1.Titles.Add("Salary Chart");
+
+        //    textBox1.Text = selected;
             
-        }
-
-        public void FillChart5()
-        {
-
-            chart1.Titles.Clear();
-            chart1.Series[4].Points.Clear();
-            chart1.Series[4].ChartType = SeriesChartType.StackedColumn100;
-            chart1.ChartAreas[0].AxisY2.Enabled = AxisEnabled.True;
-            chart1.Series[4].YAxisType = AxisType.Secondary;
-            chart1.Series[4].Name = "Midden opgeleid2";
-
-            //if (comboBox1.GetItemText(comboBox1.SelectedItem) == comboBox2.GetItemText(comboBox2.SelectedItem))
-            //{
-            //    chart1.Series[4].Name = comboBox1.GetItemText(comboBox1.SelectedItem) + " Copy";
-            //}
-            //else
-            //{
-            //    chart1.Series[4].Name = comboBox2.GetItemText(comboBox2.SelectedItem);
-            //}
-
-
-            int jaar = trackBar1.Value;
-            string selected = comboBox2.GetItemText(comboBox2.SelectedItem);
-            //string statement = "SELECT * FROM migratie WHERE wijk = " + "'selected'";
-            string statement = "SELECT * FROM Opleidingsniveau WHERE wijk = '" + selected + "'  and jaar = '" + jaar + "'";
-            //string statement = "SELECT * FROM migratie WHERE wijk = 'Rozenburg' AND jaar = 2010";
-            string connstring = "Server=127.0.0.1; port=5432; User Id=postgres; Password=123; Database=Project 3;";
-            NpgsqlConnection con = new NpgsqlConnection(connstring);
-            DataTable ds = new DataTable();
-            con.Open();
-            NpgsqlDataAdapter adapt = new NpgsqlDataAdapter(statement, con);
-            adapt.Fill(ds);
-            chart1.DataSource = ds;
-            //close connection
-            con.Close();
-            //set the member of the chart data source used to data bind to the X-values of the series  
-            foreach (DataRow row in ds.Rows)
-            {
-                chart1.Series[4].Points.AddXY(row[0], row[2]);
-            }
-            //chart1.Series["Series2"].Points.Add(jaar);
-            ////set the member columns of the chart data source used to data bind to the X-values of the series  
-            //chart1.Series["Series2"].Points.AddY("emigratietotaal");
-            //chart1.Titles.Add("Salary Chart");
-
-            textBox1.Text = selected;
-
-        }
-        public void FillChart6()
-        {
-
-            chart1.Titles.Clear();
-            chart1.Series[5].Points.Clear();
-            chart1.Series[5].ChartType = SeriesChartType.StackedColumn100;
-            chart1.ChartAreas[0].AxisY2.Enabled = AxisEnabled.True;
-            chart1.Series[5].YAxisType = AxisType.Secondary;
-            chart1.Series[5].Name = "Hoog opgeleid3";
-
-            //if (comboBox1.GetItemText(comboBox1.SelectedItem) == comboBox2.GetItemText(comboBox2.SelectedItem))
-            //{
-            //    chart1.Series[5].Name = comboBox1.GetItemText(comboBox1.SelectedItem) + " Copy";
-            //}
-            //else
-            //{
-            //    chart1.Series[5].Name = comboBox2.GetItemText(comboBox2.SelectedItem);
-            //}
-
-
-            int jaar = trackBar1.Value;
-            string selected = comboBox2.GetItemText(comboBox2.SelectedItem);
-            //string statement = "SELECT * FROM migratie WHERE wijk = " + "'selected'";
-            string statement = "SELECT * FROM Opleidingsniveau WHERE wijk = '" + selected + "'  and jaar = '" + jaar + "'";
-            //string statement = "SELECT * FROM migratie WHERE wijk = 'Rozenburg' AND jaar = 2010";
-            string connstring = "Server=127.0.0.1; port=5432; User Id=postgres; Password=123; Database=Project 3;";
-            NpgsqlConnection con = new NpgsqlConnection(connstring);
-            DataTable ds = new DataTable();
-            con.Open();
-            NpgsqlDataAdapter adapt = new NpgsqlDataAdapter(statement, con);
-            adapt.Fill(ds);
-            chart1.DataSource = ds;
-            //close connection
-            con.Close();
-            //set the member of the chart data source used to data bind to the X-values of the series  
-            foreach (DataRow row in ds.Rows)
-            {
-                chart1.Series[5].Points.AddXY(row[0], row[3]);
-            }
-            //chart1.Series["Series2"].Points.Add(jaar);
-            ////set the member columns of the chart data source used to data bind to the X-values of the series  
-            //chart1.Series["Series2"].Points.AddY("emigratietotaal");
-            //chart1.Titles.Add("Salary Chart");
-
-            textBox1.Text = selected;
-
-        }
-        //public void AddSeries()
-        //{
-        //    chart1.Titles.Clear();
-        //    chart1.Series.Clear();
-        //    if (chart1.Series.IsUniqueName("Series1"))
-        //    {
-        //        chart1.Series.Add("Series1");
-        //    }
         //}
 
-        //public void AddSeries2()
+        //public void FillChart5()
         //{
+
         //    chart1.Titles.Clear();
-        //    chart1.Series.Clear();
-        //    if (chart1.Series.IsUniqueName("Series2"))
+        //    chart1.Series[4].Points.Clear();
+        //    chart1.Series[4].ChartType = SeriesChartType.StackedColumn100;
+        //    chart1.ChartAreas[0].AxisY2.Enabled = AxisEnabled.True;
+        //    chart1.Series[4].YAxisType = AxisType.Secondary;
+        //    chart1.Series[4].Name = "Midden opgeleid2";
+
+        //    //if (comboBox1.GetItemText(comboBox1.SelectedItem) == comboBox2.GetItemText(comboBox2.SelectedItem))
+        //    //{
+        //    //    chart1.Series[4].Name = comboBox1.GetItemText(comboBox1.SelectedItem) + " Copy";
+        //    //}
+        //    //else
+        //    //{
+        //    //    chart1.Series[4].Name = comboBox2.GetItemText(comboBox2.SelectedItem);
+        //    //}
+
+
+        //    int jaar = trackBar1.Value;
+        //    string selected = comboBox2.GetItemText(comboBox2.SelectedItem);
+        //    //string statement = "SELECT * FROM migratie WHERE wijk = " + "'selected'";
+        //    string statement = "SELECT * FROM Opleidingsniveau WHERE wijk = '" + selected + "'  and jaar = '" + jaar + "'";
+        //    //string statement = "SELECT * FROM migratie WHERE wijk = 'Rozenburg' AND jaar = 2010";
+        //    string connstring = "Server=127.0.0.1; port=5432; User Id=postgres; Password=123; Database=Project 3;";
+        //    NpgsqlConnection con = new NpgsqlConnection(connstring);
+        //    DataTable ds = new DataTable();
+        //    con.Open();
+        //    NpgsqlDataAdapter adapt = new NpgsqlDataAdapter(statement, con);
+        //    adapt.Fill(ds);
+        //    chart1.DataSource = ds;
+        //    //close connection
+        //    con.Close();
+        //    //set the member of the chart data source used to data bind to the X-values of the series  
+        //    foreach (DataRow row in ds.Rows)
         //    {
-        //        chart1.Series.Add("Series2");
+        //        chart1.Series[4].Points.AddXY(row[0], row[2]);
         //    }
+        //    //chart1.Series["Series2"].Points.Add(jaar);
+        //    ////set the member columns of the chart data source used to data bind to the X-values of the series  
+        //    //chart1.Series["Series2"].Points.AddY("emigratietotaal");
+        //    //chart1.Titles.Add("Salary Chart");
+
+        //    textBox1.Text = selected;
+
         //}
+        //public void FillChart6()
+        //{
+
+        //    chart1.Titles.Clear();
+        //    chart1.Series[5].Points.Clear();
+        //    chart1.Series[5].ChartType = SeriesChartType.StackedColumn100;
+        //    chart1.ChartAreas[0].AxisY2.Enabled = AxisEnabled.True;
+        //    chart1.Series[5].YAxisType = AxisType.Secondary;
+        //    chart1.Series[5].Name = "Hoog opgeleid3";
+
+        //    //if (comboBox1.GetItemText(comboBox1.SelectedItem) == comboBox2.GetItemText(comboBox2.SelectedItem))
+        //    //{
+        //    //    chart1.Series[5].Name = comboBox1.GetItemText(comboBox1.SelectedItem) + " Copy";
+        //    //}
+        //    //else
+        //    //{
+        //    //    chart1.Series[5].Name = comboBox2.GetItemText(comboBox2.SelectedItem);
+        //    //}
+
+
+        //    int jaar = trackBar1.Value;
+        //    string selected = comboBox2.GetItemText(comboBox2.SelectedItem);
+        //    //string statement = "SELECT * FROM migratie WHERE wijk = " + "'selected'";
+        //    string statement = "SELECT * FROM Opleidingsniveau WHERE wijk = '" + selected + "'  and jaar = '" + jaar + "'";
+        //    //string statement = "SELECT * FROM migratie WHERE wijk = 'Rozenburg' AND jaar = 2010";
+        //    string connstring = "Server=127.0.0.1; port=5432; User Id=postgres; Password=123; Database=Project 3;";
+        //    NpgsqlConnection con = new NpgsqlConnection(connstring);
+        //    DataTable ds = new DataTable();
+        //    con.Open();
+        //    NpgsqlDataAdapter adapt = new NpgsqlDataAdapter(statement, con);
+        //    adapt.Fill(ds);
+        //    chart1.DataSource = ds;
+        //    //close connection
+        //    con.Close();
+        //    //set the member of the chart data source used to data bind to the X-values of the series  
+        //    foreach (DataRow row in ds.Rows)
+        //    {
+        //        chart1.Series[5].Points.AddXY(row[0], row[3]);
+        //    }
+        //    //chart1.Series["Series2"].Points.Add(jaar);
+        //    ////set the member columns of the chart data source used to data bind to the X-values of the series  
+        //    //chart1.Series["Series2"].Points.AddY("emigratietotaal");
+        //    //chart1.Titles.Add("Salary Chart");
+
+        //    textBox1.Text = selected;
+
+        //}
+        ////public void AddSeries()
+        ////{
+        ////    chart1.Titles.Clear();
+        ////    chart1.Series.Clear();
+        ////    if (chart1.Series.IsUniqueName("Series1"))
+        ////    {
+        ////        chart1.Series.Add("Series1");
+        ////    }
+        ////}
+
+        ////public void AddSeries2()
+        ////{
+        ////    chart1.Titles.Clear();
+        ////    chart1.Series.Clear();
+        ////    if (chart1.Series.IsUniqueName("Series2"))
+        ////    {
+        ////        chart1.Series.Add("Series2");
+        ////    }
+        ////}
 
         public void ComboBoxSettings()
         {
@@ -486,28 +486,15 @@ namespace FormsApp
         //Combobox1 code
         public void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(checkBox3.Checked)
-            {
-                FillChart();
-                FillChart2();
-                FillChart3();
-            }
-            
-
-           
+            chart1.Series[1].Points.Clear();
+            chart1.Series[0].Points.Clear();
         }
 
         //combobox2 code
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (checkBox3.Checked)
-            {
-                FillChart4();
-                FillChart5();
-                FillChart6();
-            }
-
-
+            chart1.Series[1].Points.Clear();
+            chart1.Series[0].Points.Clear();
         }
 
         //combobox en checkbox combinatie
@@ -550,10 +537,10 @@ namespace FormsApp
             SwitchSettings();
             FillChart();
             FillChart2();
-            FillChart3();
-            FillChart4();
-            FillChart5();
-            FillChart6();
+            //FillChart3();
+            //FillChart4();
+            //FillChart5();
+            //FillChart6();
         }
 
         //Switchen van de map
@@ -607,7 +594,10 @@ namespace FormsApp
 
         private void checkBox3_CheckedChanged(object sender, EventArgs e)
         {
-
+            if (checkBox2.Checked) { 
+            chart1.ChartAreas[0].AxisY2.Enabled = AxisEnabled.True;
+            chart1.Series[1].YAxisType = AxisType.Secondary;
+        }
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
