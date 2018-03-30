@@ -63,9 +63,9 @@ namespace FormsApp.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Versie1 {
+        internal static System.Drawing.Bitmap jaar2010 {
             get {
-                object obj = ResourceManager.GetObject("Versie1", resourceCulture);
+                object obj = ResourceManager.GetObject("jaar2010", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -73,9 +73,9 @@ namespace FormsApp.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Versie2 {
+        internal static System.Drawing.Bitmap jaar2011 {
             get {
-                object obj = ResourceManager.GetObject("Versie2", resourceCulture);
+                object obj = ResourceManager.GetObject("jaar2011", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -83,9 +83,9 @@ namespace FormsApp.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Versie3 {
+        internal static System.Drawing.Bitmap jaar2012 {
             get {
-                object obj = ResourceManager.GetObject("Versie3", resourceCulture);
+                object obj = ResourceManager.GetObject("jaar2012", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -93,9 +93,9 @@ namespace FormsApp.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Versie4 {
+        internal static System.Drawing.Bitmap jaar2013 {
             get {
-                object obj = ResourceManager.GetObject("Versie4", resourceCulture);
+                object obj = ResourceManager.GetObject("jaar2013", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -103,9 +103,29 @@ namespace FormsApp.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Versie5 {
+        internal static System.Drawing.Bitmap jaar2014 {
             get {
-                object obj = ResourceManager.GetObject("Versie5", resourceCulture);
+                object obj = ResourceManager.GetObject("jaar2014", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap jaar2015 {
+            get {
+                object obj = ResourceManager.GetObject("jaar2015", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap jaar2016 {
+            get {
+                object obj = ResourceManager.GetObject("jaar2016", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -20,11 +20,14 @@ namespace FormsApp
     public partial class Form1 : Form
     {
         //loading in images
-        Bitmap img1 = Properties.Resources.Versie1;
-        Bitmap img2 = Properties.Resources.Versie2;
-        Bitmap img3 = Properties.Resources.Versie3;
-        Bitmap img4 = Properties.Resources.Versie4;
-        Bitmap img5 = Properties.Resources.Versie5;
+        Bitmap img1 = Properties.Resources.jaar2010;
+        Bitmap img2 = Properties.Resources.jaar2011;
+        Bitmap img3 = Properties.Resources.jaar2012;
+        Bitmap img4 = Properties.Resources.jaar2013;
+        Bitmap img5 = Properties.Resources.jaar2014;
+        Bitmap img6 = Properties.Resources.jaar2015;
+        Bitmap img7 = Properties.Resources.jaar2016;
+
 
         public Form1()
         {
@@ -258,6 +261,7 @@ namespace FormsApp
         //show trackbar at start app
         public void TrackBarSettings()
         {
+            
             trackBar1.Minimum = 2010;
 
             trackBar1.Maximum = 2016;
@@ -267,7 +271,7 @@ namespace FormsApp
         //show value trackbar in textbox when scrolling
         public void trackBar1_Scroll(object sender, EventArgs e)
         {
-            
+            textBox1.Text = trackBar1.Value.ToString();
             if (checkBox1.Checked)
             {
                 SwitchSettings();
@@ -275,9 +279,33 @@ namespace FormsApp
 
             if (checkBox2.Checked || checkBox3.Checked || checkBox4.Checked)
             {
+                //textBox1.Text = trackBar1.Value.ToString();
                 FillChart();
                 FillChart2();
             }
+            //clears chart when there is no data for that year
+            if (checkBox4.Checked && (trackBar1.Value == 2010 || trackBar1.Value == 2016))
+            {
+                //clears all series
+                chart1.Series.Clear();
+                //adds series again
+                chart1.Series.Add("Series1");
+                chart1.Series.Add("Series2");
+                //set charttype
+                chart1.Series[0].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Column;
+                chart1.Series[1].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Column;
+                //gives series names
+                chart1.Series[0].Name = "gem inkomen";
+                chart1.Series[1].Name = "gem leeftijd";
+                //gives axis names
+                chart1.ChartAreas[0].AxisX.Title = "Wijk";
+                chart1.ChartAreas[0].AxisY.Title = "Aantal Misdrijven";
+                //enables second Y-Axis
+                chart1.ChartAreas[0].AxisY2.Enabled = AxisEnabled.True;
+                //gives series axis type
+                chart1.Series[1].YAxisType = AxisType.Secondary;
+            }
+
         }
 
         //Switchen van de map
@@ -289,24 +317,32 @@ namespace FormsApp
 
             switch (caseSwitch)
             {
-                case 2013:
-                    textBox1.Text = "Map2";
+                case 2011:
+                    textBox1.Text = "2011";
                     pictureBox1.Image = img2;
                     break;
-                case 2014:
-                    textBox1.Text = "Map3";
+                case 2012:
+                    textBox1.Text = "2012";
                     pictureBox1.Image = img3;
                     break;
-                case 2015:
-                    textBox1.Text = "Map4";
+                case 2013:
+                    textBox1.Text = "2013";
                     pictureBox1.Image = img4;
                     break;
-                //case 4:
-                //    textBox1.Text = "Map4";
-                //    pictureBox1.Image = img5;
-                //    break;
+                case 2014:
+                    textBox1.Text = "2014";
+                    pictureBox1.Image = img5;
+                    break;
+                case 2015:
+                    textBox1.Text = "2015";
+                    pictureBox1.Image = img6;
+                    break;
+                case 2016:
+                    textBox1.Text = "2016";
+                    pictureBox1.Image = img7;
+                    break;
                 default:
-                    textBox1.Text = "Map1";
+                    textBox1.Text = "2010";
                     pictureBox1.Image = img1;
                     break;
             }
@@ -397,6 +433,7 @@ namespace FormsApp
         {
             if (checkBox4.Checked)
             {
+
                 //clears all series
                 chart1.Series.Clear();
                 //adds series again

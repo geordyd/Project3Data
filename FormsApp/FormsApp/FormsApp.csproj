@@ -91,20 +91,27 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <None Include="Resources\Versie1.jpg" />
+    <None Include="Resources\jaar2010.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Versie2.jpg" />
+    <None Include="Resources\jaar2011.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Versie3.jpg" />
+    <None Include="Resources\jaar2012.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Versie4.jpg" />
+    <None Include="Resources\jaar2013.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Versie5.jpg" />
+    <None Include="Resources\jaar2014.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\jaar2015.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\jaar2016.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

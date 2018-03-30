@@ -148,7 +148,7 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(320, 46);
+            this.textBox1.Location = new System.Drawing.Point(268, 414);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(151, 20);
             this.textBox1.TabIndex = 13;
@@ -156,9 +156,9 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(21, 90);
+            this.pictureBox1.Location = new System.Drawing.Point(32, 90);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(687, 344);
+            this.pictureBox1.Size = new System.Drawing.Size(650, 300);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 14;
             this.pictureBox1.TabStop = false;
