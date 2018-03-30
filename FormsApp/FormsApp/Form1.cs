@@ -32,7 +32,9 @@ namespace FormsApp
             ComboBoxSettings();
             TrackBarSettings();
             SwitchSettings();
+
             
+
             //FillChart();
         }
         //connection with database
@@ -40,10 +42,6 @@ namespace FormsApp
         public void FillChart()
         {
             chart1.Titles.Clear();
-            chart1.Series[0].Points.Clear();
-
-            
-
             if (comboBox1.GetItemText(comboBox1.SelectedItem) == comboBox2.GetItemText(comboBox2.SelectedItem))
             {
                 chart1.Series[0].Name = comboBox1.GetItemText(comboBox1.SelectedItem) + " Kopie";
@@ -69,9 +67,9 @@ namespace FormsApp
             }
             else if (checkBox4.Checked)
             {
-                statement = "SELECT * FROM criminaliteit WHERE wijk = '" + selected + "'  ";
+                statement = "SELECT DISTINCT leeftijd.wijk, leeftijd.gem_leeftijd, leeftijd.jaar, inkomen.gemiddeld_inkomen FROM leeftijd, inkomen WHERE leeftijd.jaar = inkomen.jaar AND leeftijd.wijk = inkomen.wijk AND leeftijd.wijk ='" + selected + "' and inkomen.jaar =" + jaar;
             }
-           
+
 
             string connstring = "Server=127.0.0.1; port=5432; User Id=postgres; Password=hallo; Database=Database Project;";
             NpgsqlConnection con = new NpgsqlConnection(connstring);
@@ -99,7 +97,10 @@ namespace FormsApp
                 }
                 else if (checkBox4.Checked)
                 {
-                    chart1.Series[0].Points.AddXY(row[2], row[1]);
+                    chart1.Series[1].Points.Clear();
+                    chart1.Series[0].Points.Clear();
+                    chart1.Series[0].Points.AddXY(row[0], row[3]);
+                    chart1.Series[1].Points.AddXY(row[0], row[1]);
                 }
             }
         }
@@ -108,7 +109,6 @@ namespace FormsApp
         {
 
             chart1.Titles.Clear();
-            chart1.Series[1].Points.Clear();
             if (comboBox1.GetItemText(comboBox1.SelectedItem) == comboBox2.GetItemText(comboBox2.SelectedItem))
             {
                 chart1.Series[1].Name = comboBox1.GetItemText(comboBox1.SelectedItem) + " Kopie2";
@@ -138,7 +138,7 @@ namespace FormsApp
             }
             else if (checkBox4.Checked)
             {
-                statement = "SELECT * FROM criminaliteit WHERE wijk = '" + selected + "'  ";
+                statement = "SELECT DISTINCT leeftijd.wijk, leeftijd.gem_leeftijd, leeftijd.jaar, inkomen.gemiddeld_inkomen FROM leeftijd, inkomen WHERE leeftijd.jaar = inkomen.jaar AND leeftijd.wijk = inkomen.wijk AND leeftijd.wijk ='" + selected + "' and inkomen.jaar =" + jaar;
             }
 
             //string statement = "SELECT * FROM migratie WHERE wijk = 'Rozenburg' AND jaar = 2010";
@@ -168,7 +168,8 @@ namespace FormsApp
                 }
                 else if (checkBox4.Checked)
                 {
-                    chart1.Series[1].Points.AddXY(row[2], row[1]);
+                    chart1.Series[0].Points.AddXY(row[0], row[3]);
+                    chart1.Series[1].Points.AddXY(row[0], row[1]);
                 }
             }
         }
@@ -216,18 +217,36 @@ namespace FormsApp
         //Combobox1 code
         public void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(checkBox2.Checked || checkBox3.Checked || checkBox4.Checked)
+            if (checkBox2.Checked)
             {
+                chart1.Series[1].Points.Clear();
+                chart1.Series[0].Points.Clear();
                 FillChart();
+                FillChart2();
+            }
+            if(checkBox3.Checked || checkBox4.Checked)
+            {
+                chart1.Series[1].Points.Clear();
+                chart1.Series[0].Points.Clear();
+                //FillChart();
             }
         }
 
         //combobox2 code
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (checkBox2.Checked || checkBox3.Checked || checkBox4.Checked)
+            if (checkBox2.Checked)
             {
+                chart1.Series[1].Points.Clear();
+                chart1.Series[0].Points.Clear();
+                FillChart();
                 FillChart2();
+            }
+            if (checkBox3.Checked || checkBox4.Checked)
+            {
+                chart1.Series[1].Points.Clear();
+                chart1.Series[0].Points.Clear();
+                //FillChart2();
             }
 
 
@@ -242,11 +261,13 @@ namespace FormsApp
             trackBar1.Minimum = 2010;
 
             trackBar1.Maximum = 2016;
+
         }
 
         //show value trackbar in textbox when scrolling
         public void trackBar1_Scroll(object sender, EventArgs e)
         {
+            
             if (checkBox1.Checked)
             {
                 SwitchSettings();
@@ -315,10 +336,27 @@ namespace FormsApp
         private void checkBox2_CheckedChanged(object sender, EventArgs e)
         {
             if (checkBox2.Checked)
-            {
-                trackBar1.Visible = false;
-                chart1.ChartAreas[0].AxisX.Title = "Jaar";
+            {                
+                //clears all series
+                chart1.Series.Clear();
+                //adds series again
+                chart1.Series.Add("Series1");
+                chart1.Series.Add("Series2");
+                //set charttype
+                chart1.Series[0].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+                chart1.Series[1].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+                //gives series names
+                //chart1.Series[0].Name = "gem inkomen";
+                //chart1.Series[1].Name = "gem leeftijd";
+                //gives axis names
+                chart1.ChartAreas[0].AxisX.Title = "Wijk";
                 chart1.ChartAreas[0].AxisY.Title = "Aantal Misdrijven";
+                ////enables second Y-Axis
+                chart1.ChartAreas[0].AxisY2.Enabled = AxisEnabled.False;
+                ////gives series axis type
+                chart1.Series[1].YAxisType = AxisType.Primary;
+                //execute fillchart functions 
+                trackBar1.Visible = false;
                 FillChart();
                 FillChart2();
                 checkBox1.AutoCheck = false;
@@ -338,6 +376,7 @@ namespace FormsApp
         {
             if (checkBox3.Checked)
             {
+
                 chart1.ChartAreas[0].AxisX.Title = "Jaar";
                 chart1.ChartAreas[0].AxisY.Title = "Aantal Misdrijven";
                 FillChart();
@@ -358,21 +397,45 @@ namespace FormsApp
         {
             if (checkBox4.Checked)
             {
+                //clears all series
+                chart1.Series.Clear();
+                //adds series again
+                chart1.Series.Add("Series1");
+                chart1.Series.Add("Series2");
+                //set charttype
+                chart1.Series[0].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Column;
+                chart1.Series[1].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Column;
+                //gives series names
+                chart1.Series[0].Name = "gem inkomen";
+                chart1.Series[1].Name = "gem leeftijd";
+                //gives axis names
                 chart1.ChartAreas[0].AxisX.Title = "Wijk";
                 chart1.ChartAreas[0].AxisY.Title = "Aantal Misdrijven";
+                //enables second Y-Axis
+                chart1.ChartAreas[0].AxisY2.Enabled = AxisEnabled.True;
+                //gives series axis type
+                chart1.Series[1].YAxisType = AxisType.Secondary;
+                //execute fillchart functions 
                 FillChart();
                 FillChart2();
+                //can't click on other checkboxes
                 checkBox1.AutoCheck = false;
                 checkBox2.AutoCheck = false;
                 checkBox3.AutoCheck = false;
             }
             else
             {
+                //other checkboxes are clickable 
                 checkBox1.AutoCheck = true;
                 checkBox2.AutoCheck = true;
                 checkBox3.AutoCheck = true;
 
             }
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            
         }
     }
 }
