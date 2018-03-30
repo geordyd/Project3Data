@@ -67,7 +67,7 @@ namespace FormsApp
             {
                 statement = "SELECT * FROM criminaliteit WHERE wijk = '" + selected + "'  ";
             }
-            else if (checkBox3.Checked)
+            else if (checkBox4.Checked)
             {
                 statement = "SELECT * FROM criminaliteit WHERE wijk = '" + selected + "'  ";
             }
@@ -97,23 +97,11 @@ namespace FormsApp
                 {
                     chart1.Series[0].Points.AddXY(row[2], row[1]);
                 }
-                else if (checkBox3.Checked)
+                else if (checkBox4.Checked)
                 {
                     chart1.Series[0].Points.AddXY(row[2], row[1]);
                 }
             }
-
-            //set the member of the chart data source used to data bind to the X-values of the series  
-
-            //chart1.Series["Series1"].Points.Add(jaar);
-            //    //set the member columns of the chart data source used to data bind to the X-values of the series  
-            //    chart1.Series["Series1"].YValueMembers = "emigratietotaal";
-            //    chart1.Titles.Add("Salary Chart");
-
-
-
-            //textBox1.Text = selected;
-            
         }
         
         public void FillChart2()
@@ -148,7 +136,7 @@ namespace FormsApp
             {
                 statement = "SELECT * FROM criminaliteit WHERE wijk = '" + selected + "'  ";
             }
-            else if (checkBox3.Checked)
+            else if (checkBox4.Checked)
             {
                 statement = "SELECT * FROM criminaliteit WHERE wijk = '" + selected + "'  ";
             }
@@ -178,39 +166,12 @@ namespace FormsApp
                 {
                     chart1.Series[1].Points.AddXY(row[2], row[1]);
                 }
-                else if (checkBox3.Checked)
+                else if (checkBox4.Checked)
                 {
                     chart1.Series[1].Points.AddXY(row[2], row[1]);
                 }
             }
-            //chart1.Series["Series2"].Points.Add(jaar);
-            ////set the member columns of the chart data source used to data bind to the X-values of the series  
-            //chart1.Series["Series2"].Points.AddY("emigratietotaal");
-            //chart1.Titles.Add("Salary Chart");
-
-            textBox1.Text = selected;
-            
         }
-
-        //public void AddSeries()
-        //{
-        //    chart1.Titles.Clear();
-        //    chart1.Series.Clear();
-        //    if (chart1.Series.IsUniqueName("Series1"))
-        //    {
-        //        chart1.Series.Add("Series1");
-        //    }
-        //}
-
-        //public void AddSeries2()
-        //{
-        //    chart1.Titles.Clear();
-        //    chart1.Series.Clear();
-        //    if (chart1.Series.IsUniqueName("Series2"))
-        //    {
-        //        chart1.Series.Add("Series2");
-        //    }
-        //}
 
         public void ComboBoxSettings()
         {
@@ -250,119 +211,6 @@ namespace FormsApp
                     "Hoek van Holland"});
 
         }
-
-        ////ComboBox1 code, show chart
-        //public void ChartExample()
-        //{
-        //    this.chart1.Titles.Clear();
-        //    this.chart1.Series.Clear();
-
-        //    // Data arrays
-        //    string[] seriesArray = { "Cat", "Dog", "Bird", "Monkey" };
-        //    int[] pointsArray = { 2, 1, 7, 5 };
-
-        //    // Set palette
-        //    this.chart1.Palette = ChartColorPalette.EarthTones;
-
-        //    // Set title
-        //    this.chart1.Titles.Add("ComboBox1");
-
-        //    // Add series.
-        //    for (int i = 0; i < seriesArray.Length; i++)
-        //    {
-        //        Series series = this.chart1.Series.Add(seriesArray[i]);
-        //        series.Points.Add(pointsArray[i]);
-        //    }
-        //}
-
-        ////ComboBox1 code, show chart
-        //public void ChartExample2()
-        //{
-        //    this.chart1.Titles.Clear();
-        //    this.chart1.Series.Clear();
-
-        //    // Data arrays
-        //    string[] seriesArray = { "Paling", "Makreel", "Snoek", "Goudvis" };
-        //    int[] pointsArray = { 10, 3, 6, 1 };
-
-        //    // Set palette
-        //    this.chart1.Palette = ChartColorPalette.Grayscale;
-
-        //    // Set title
-        //    this.chart1.Titles.Add("Combobox1");
-
-        //    // Add series.
-        //    for (int i = 0; i < seriesArray.Length; i++)
-        //    {
-        //        Series series = this.chart1.Series.Add(seriesArray[i]);
-        //        series.Points.Add(pointsArray[i]);
-        //    }
-        //}
-
-        ////ComboBox2 code, show chart 
-        //public void ChartExample3()
-        //{
-        //    this.chart1.Titles.Clear();
-        //    this.chart1.Series.Clear();
-
-        //    // Data arrays
-        //    string[] seriesArray = { "Cat", "Dog", "Bird", "Monkey" };
-        //    int[] pointsArray = { 2, 1, 7, 5 };
-
-        //    // Set palette
-        //    this.chart1.Palette = ChartColorPalette.EarthTones;
-
-        //    // Set title
-        //    this.chart1.Titles.Add("ComboBox2");
-
-        //    // Add series.
-        //    for (int i = 0; i < seriesArray.Length; i++)
-        //    {
-        //        Series series = this.chart1.Series.Add(seriesArray[i]);
-        //        series.Points.Add(pointsArray[i]);
-        //    }
-        //    var series2 = new Series("Finance");
-
-        //    series2.ChartType = SeriesChartType.Line;
-        //    series2.Points.DataBindXY(new[] { 7, 5, 2, 1 }, new[] { 3, 5, 2, 1 });
-        //    chart1.Series.Add(series2);
-        //}
-
-        ////ComboBox2 code, show chart
-        //public void ChartExample4()
-        //{
-        //    this.chart1.Titles.Clear();
-        //    this.chart1.Series.Clear();
-
-        //    // Data arrays
-        //    //string[] seriesArray = { "Paling", "Makreel", "Snoek", "Goudvis" };
-        //    //int[] pointsArray = { 10, 3, 6, 1 };
-
-        //    //// Set palette
-        //    //this.chart1.Palette = ChartColorPalette.Grayscale;
-
-        //    //// Set title
-        //    //this.chart1.Titles.Add("ComboBox2");
-
-        //    //// Add series.
-
-        //    //for (int i = 0; i < seriesArray.Length; i++)
-        //    //{
-
-        //    //    Series series = this.chart1.Series.Add(seriesArray[i]);
-        //    //    var series = new Series("Finance");
-
-        //    //    series.ChartType = SeriesChartType.Line;
-        //    //    series.Points.DataBindXY(new[] { 2001, 2002, 2003, 2004 }, new[] { 100, 200, 90, 150 });
-        //    //    series.Points.Add(series);
-        //    //}
-        //    var series = new Series("Finance");
-
-        //    series.ChartType = SeriesChartType.Line;
-        //    series.Points.DataBindXY(new[] { 7, 5, 2, 1 }, new[] { 3, 5, 2, 1 });
-        //    chart1.Series.Add(series);
-        //}
-
 
         //combobox1
         //Combobox1 code
@@ -468,9 +316,6 @@ namespace FormsApp
         {
             if (checkBox2.Checked)
             {
-                //chart1.Series[0].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-                //chart1.Series[1].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-                //chart1.Series.Add("Series1");
                 trackBar1.Visible = false;
                 chart1.ChartAreas[0].AxisX.Title = "Jaar";
                 chart1.ChartAreas[0].AxisY.Title = "Aantal Misdrijven";
