@@ -231,7 +231,8 @@ namespace FormsApp
             {
                 chart1.Series[1].Points.Clear();
                 chart1.Series[0].Points.Clear();
-                //FillChart();
+                FillChart();
+                FillChart2();
             }
         }
 
@@ -249,7 +250,8 @@ namespace FormsApp
             {
                 chart1.Series[1].Points.Clear();
                 chart1.Series[0].Points.Clear();
-                //FillChart2();
+                FillChart();
+                FillChart2();
             }
 
 
@@ -393,6 +395,7 @@ namespace FormsApp
                 chart1.Series[1].YAxisType = AxisType.Primary;
                 //execute fillchart functions 
                 trackBar1.Visible = false;
+                textBox1.Visible = false;
                 FillChart();
                 FillChart2();
                 checkBox1.AutoCheck = false;
@@ -402,6 +405,7 @@ namespace FormsApp
             else
             {
                 trackBar1.Visible = true;
+                textBox1.Visible = true;
                 checkBox1.AutoCheck = true;
                 checkBox3.AutoCheck = true;
                 checkBox4.AutoCheck = true;
