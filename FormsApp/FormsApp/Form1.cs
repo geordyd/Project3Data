@@ -35,10 +35,9 @@ namespace FormsApp
             ComboBoxSettings();
             TrackBarSettings();
             SwitchSettings();
-
+            this.Text = "Megranja De Informática©";
+            textBox2.Visible = false;
             
-
-            //FillChart();
         }
         //connection with database
         public string statement;
@@ -56,11 +55,8 @@ namespace FormsApp
 
             int jaar = trackBar1.Value;
             string selected = comboBox1.GetItemText(comboBox1.SelectedItem);
-            if (checkBox1.Checked)
-            {
-                statement = "SELECT * FROM criminaliteit WHERE wijk = '" + selected + "'  ";
-            }
-            else if (checkBox2.Checked)
+
+            if (checkBox2.Checked)
             {
                 statement = "SELECT * FROM criminaliteit WHERE wijk = '" + selected + "'  ";
             }
@@ -127,11 +123,7 @@ namespace FormsApp
             //string statement = "SELECT * FROM migratie WHERE wijk = " + "'selected'";
             
             //Statements per checkbox(subgroep)
-            if (checkBox1.Checked)
-            {
-                statement = "SELECT * FROM criminaliteit WHERE wijk = '" + selected + "'  ";
-            }
-            else if (checkBox2.Checked)
+            if (checkBox2.Checked)
             {
                 statement = "SELECT * FROM criminaliteit WHERE wijk = '" + selected + "'  ";
             }
@@ -220,6 +212,7 @@ namespace FormsApp
         //Combobox1 code
         public void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
+            ShowNoDataText();
             if (checkBox2.Checked)
             {
                 chart1.Series[1].Points.Clear();
@@ -239,6 +232,7 @@ namespace FormsApp
         //combobox2 code
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
+            ShowNoDataText();
             if (checkBox2.Checked)
             {
                 chart1.Series[1].Points.Clear();
@@ -273,6 +267,7 @@ namespace FormsApp
         //show value trackbar in textbox when scrolling
         public void trackBar1_Scroll(object sender, EventArgs e)
         {
+            ShowNoDataText();
             textBox1.Text = trackBar1.Value.ToString();
             if (checkBox1.Checked)
             {
@@ -286,7 +281,7 @@ namespace FormsApp
                 FillChart2();
             }
             //clears chart when there is no data for that year
-            if (checkBox4.Checked && (trackBar1.Value == 2010 || trackBar1.Value == 2016))
+            if (checkBox4.Checked && (trackBar1.Value == 2010 || trackBar1.Value == 2011 || trackBar1.Value == 2016))
             {
                 //clears all series
                 chart1.Series.Clear();
@@ -307,6 +302,7 @@ namespace FormsApp
                 //gives series axis type
                 chart1.Series[1].YAxisType = AxisType.Secondary;
             }
+
 
         }
 
@@ -435,9 +431,10 @@ namespace FormsApp
 
         private void checkBox4_CheckedChanged(object sender, EventArgs e)
         {
+            ShowNoDataText();
             if (checkBox4.Checked)
             {
-
+                
                 //clears all series
                 chart1.Series.Clear();
                 //adds series again
@@ -474,9 +471,31 @@ namespace FormsApp
             }
         }
 
+        public void ShowNoDataText()
+        {
+            if (checkBox4.Checked && (trackBar1.Value == 2010 || trackBar1.Value == 2011 || trackBar1.Value == 2016))
+            {
+                textBox2.Visible = true;
+            }
+            else
+            {
+                textBox2.Visible = false;
+            }
+        }
+
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
             
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void textBox3_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
