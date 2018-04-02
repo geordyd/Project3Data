@@ -44,13 +44,10 @@ namespace FormsApp
         public void FillChart()
         {
             chart1.Titles.Clear();
-            if (comboBox1.GetItemText(comboBox1.SelectedItem) == comboBox2.GetItemText(comboBox2.SelectedItem))
+
+            if (checkBox2.Checked)
             {
-                chart1.Series[0].Name = comboBox1.GetItemText(comboBox1.SelectedItem) + " Kopie";
-            }
-            else
-            {
-                chart1.Series[0].Name = comboBox1.GetItemText(comboBox1.SelectedItem);
+                DoubleNames();
             }
 
             int jaar = trackBar1.Value;
@@ -62,7 +59,9 @@ namespace FormsApp
             }
             else if (checkBox3.Checked)
             {
-                statement = "SELECT * FROM criminaliteit WHERE wijk = '" + selected + "'  ";
+                statement = "SELECT opleidingsniveau.wijk,laag_opgeleid_percentage,middelbaar_opgeleid_percentage,hoog_opgeleid_percentage,werkloos_percentage, " +
+    "opleidingsniveau.jaar FROM opleidingsniveau, werkloosheid WHERE opleidingsniveau.wijk = werkloosheid.wijk " +
+    "and opleidingsniveau.jaar = werkloosheid.jaar AND opleidingsniveau.wijk = '" + selected + "' and opleidingsniveau.jaar =" + jaar + "";
             }
             else if (checkBox4.Checked)
             {
@@ -92,7 +91,16 @@ namespace FormsApp
                 }
                 else if (checkBox3.Checked)
                 {
-                    chart1.Series[0].Points.AddXY(row[2], row[1]);
+                    chart1.Series[0].Points.Clear();
+                    chart1.Series[1].Points.Clear();
+                    chart1.Series[2].Points.Clear();
+                    chart1.Series[3].Points.Clear();
+                    chart1.Series[4].Points.Clear();
+                    chart1.Series[0].Points.AddXY(row[0], row[1]);
+                    chart1.Series[1].Points.AddXY(row[0], row[2]);
+                    chart1.Series[2].Points.AddXY(row[0], row[3]);
+                    chart1.Series[3].Points.AddXY(row[0], row[4]);
+                    chart1.Series[4].Points.AddXY(row[0], 100);
                 }
                 else if (checkBox4.Checked)
                 {
@@ -108,15 +116,10 @@ namespace FormsApp
         {
 
             chart1.Titles.Clear();
-            if (comboBox1.GetItemText(comboBox1.SelectedItem) == comboBox2.GetItemText(comboBox2.SelectedItem))
+            if (checkBox2.Checked)
             {
-                chart1.Series[1].Name = comboBox1.GetItemText(comboBox1.SelectedItem) + " Kopie2";
+                DoubleNames();
             }
-            else
-            {
-                chart1.Series[1].Name = comboBox2.GetItemText(comboBox2.SelectedItem);
-            }
-            
 
             int jaar = trackBar1.Value;
             string selected = comboBox2.GetItemText(comboBox2.SelectedItem);
@@ -129,7 +132,9 @@ namespace FormsApp
             }
             else if (checkBox3.Checked)
             {
-                statement = "SELECT * FROM criminaliteit WHERE wijk = '" + selected + "'  ";
+                statement = "SELECT opleidingsniveau.wijk,laag_opgeleid_percentage,middelbaar_opgeleid_percentage,hoog_opgeleid_percentage,werkloos_percentage, " +
+    "opleidingsniveau.jaar FROM opleidingsniveau, werkloosheid WHERE opleidingsniveau.wijk = werkloosheid.wijk " +
+    "and opleidingsniveau.jaar = werkloosheid.jaar AND opleidingsniveau.wijk = '" + selected + "' and opleidingsniveau.jaar =" + jaar + "";
             }
             else if (checkBox4.Checked)
             {
@@ -159,7 +164,12 @@ namespace FormsApp
                 }
                 else if (checkBox3.Checked)
                 {
-                    chart1.Series[1].Points.AddXY(row[2], row[1]);
+                    chart1.Series[0].Points.AddXY(row[0], row[1]);
+                    chart1.Series[1].Points.AddXY(row[0], row[2]);
+                    chart1.Series[2].Points.AddXY(row[0], row[3]);
+                    chart1.Series[3].Points.AddXY(row[0], row[4]);
+                    var count = chart1.Series[3].Points.Count;
+                    chart1.Series[4].Points.AddXY(row[0], 100 - count);
                 }
                 else if (checkBox4.Checked)
                 {
@@ -280,6 +290,61 @@ namespace FormsApp
                 FillChart();
                 FillChart2();
             }
+
+            if (checkBox3.Checked && (trackBar1.Value == 2010 || trackBar1.Value == 2011 || trackBar1.Value == 2016))
+            {
+                chart1.Series.Clear();
+                chart1.Series.Add("Series1");
+                chart1.Series.Add("Series2");
+                chart1.Series.Add("Series3");
+                chart1.Series.Add("Series4");
+                chart1.Series.Add("Series5");
+
+                chart1.Series[0].Color = Color.Yellow;
+                chart1.Series[1].Color = Color.DarkOrange;
+                chart1.Series[2].Color = Color.LightBlue;
+                chart1.Series[3].Color = Color.IndianRed;
+                chart1.Series[4].Color = Color.Transparent;
+
+                chart1.ChartAreas[0].AxisY2.Enabled = AxisEnabled.True;
+
+                chart1.Series[0].YAxisType = AxisType.Primary;
+                chart1.Series[1].YAxisType = AxisType.Primary;
+                chart1.Series[2].YAxisType = AxisType.Primary;
+                chart1.Series[3].YAxisType = AxisType.Secondary;
+                chart1.Series[4].YAxisType = AxisType.Secondary;
+
+                chart1.Series[0].Name = "Laag opgeleid";
+                chart1.Series[1].Name = "Middelbaar opgeleid";
+                chart1.Series[2].Name = "Hoog opgeleid";
+                chart1.Series[3].Name = "Werkloosheid";
+                chart1.Series[4].Name = "Fill";
+
+                chart1.Series[0].ChartType = SeriesChartType.StackedColumn100;
+                chart1.Series[1].ChartType = SeriesChartType.StackedColumn100;
+                chart1.Series[2].ChartType = SeriesChartType.StackedColumn100;
+                chart1.Series[3].ChartType = SeriesChartType.StackedColumn100;
+                chart1.Series[4].ChartType = SeriesChartType.StackedColumn100;
+
+                chart1.ChartAreas[0].AxisX.Title = "Wijk";
+                chart1.ChartAreas[0].AxisY.Title = "Percentage";
+
+                chart1.ChartAreas[0].AxisX.LabelStyle.Angle = 0;
+                chart1.ChartAreas[0].Position.Height = 100;
+
+                chart1.Series[4].IsVisibleInLegend = false;
+
+                chart1.Series[0].IsValueShownAsLabel = true;
+                chart1.Series[1].IsValueShownAsLabel = true;
+                chart1.Series[2].IsValueShownAsLabel = true;
+                chart1.Series[3].IsValueShownAsLabel = true;
+
+                chart1.Series[0].BorderColor = Color.Black;
+                chart1.Series[1].BorderColor = Color.Black;
+                chart1.Series[2].BorderColor = Color.Black;
+                chart1.Series[3].BorderColor = Color.Black;
+            }
+
             //clears chart when there is no data for that year
             if (checkBox4.Checked && (trackBar1.Value == 2010 || trackBar1.Value == 2011 || trackBar1.Value == 2016))
             {
@@ -292,11 +357,11 @@ namespace FormsApp
                 chart1.Series[0].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Column;
                 chart1.Series[1].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Column;
                 //gives series names
-                chart1.Series[0].Name = "gem inkomen";
-                chart1.Series[1].Name = "gem leeftijd";
+                chart1.Series[0].Name = "Gemiddelde Inkomen";
+                chart1.Series[1].Name = "Gemiddelde Leeftijd";
                 //gives axis names
                 chart1.ChartAreas[0].AxisX.Title = "Wijk";
-                chart1.ChartAreas[0].AxisY.Title = "Aantal Misdrijven";
+                chart1.ChartAreas[0].AxisY.Title = "Gemiddelde Inkomen";
                 //enables second Y-Axis
                 chart1.ChartAreas[0].AxisY2.Enabled = AxisEnabled.True;
                 //gives series axis type
@@ -355,6 +420,8 @@ namespace FormsApp
         {
             if (checkBox1.Checked)
             {
+                chart1.Series.Clear();
+                chart1.ChartAreas[0].AxisY2.Enabled = AxisEnabled.False;
                 checkBox2.AutoCheck = false;
                 checkBox3.AutoCheck = false;
                 checkBox4.AutoCheck = false;
@@ -370,20 +437,20 @@ namespace FormsApp
         private void checkBox2_CheckedChanged(object sender, EventArgs e)
         {
             if (checkBox2.Checked)
-            {                
+            {
+                richTextBox4.Visible = false;
                 //clears all series
                 chart1.Series.Clear();
                 //adds series again
                 chart1.Series.Add("Series1");
                 chart1.Series.Add("Series2");
+                //Series color
+                chart1.Series[1].Color = Color.Red;
                 //set charttype
                 chart1.Series[0].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
                 chart1.Series[1].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-                //gives series names
-                //chart1.Series[0].Name = "gem inkomen";
-                //chart1.Series[1].Name = "gem leeftijd";
                 //gives axis names
-                chart1.ChartAreas[0].AxisX.Title = "Wijk";
+                chart1.ChartAreas[0].AxisX.Title = "Jaar";
                 chart1.ChartAreas[0].AxisY.Title = "Aantal Misdrijven";
                 ////enables second Y-Axis
                 chart1.ChartAreas[0].AxisY2.Enabled = AxisEnabled.False;
@@ -400,6 +467,7 @@ namespace FormsApp
             }
             else
             {
+                richTextBox4.Visible = true;
                 trackBar1.Visible = true;
                 textBox1.Visible = true;
                 checkBox1.AutoCheck = true;
@@ -410,13 +478,73 @@ namespace FormsApp
 
         private void checkBox3_CheckedChanged(object sender, EventArgs e)
         {
+            ShowNoDataText();
             if (checkBox3.Checked)
             {
+                
+                chart1.Series.Clear();
+                chart1.Series.Add("Series1");
+                chart1.Series.Add("Series2");
+                chart1.Series.Add("Series3");
+                chart1.Series.Add("Series4");
+                chart1.Series.Add("Series5");
 
-                chart1.ChartAreas[0].AxisX.Title = "Jaar";
-                chart1.ChartAreas[0].AxisY.Title = "Aantal Misdrijven";
+                chart1.Series[0].Color = Color.Yellow;
+                chart1.Series[1].Color = Color.DarkOrange;
+                chart1.Series[2].Color = Color.LightBlue;
+                chart1.Series[3].Color = Color.IndianRed;
+                chart1.Series[4].Color = Color.Transparent;
+
+                chart1.ChartAreas[0].AxisY2.Enabled = AxisEnabled.True;
+
+                chart1.ChartAreas[0].AxisY2.Title = "";
+
+                chart1.Series[0].YAxisType = AxisType.Primary;
+                chart1.Series[1].YAxisType = AxisType.Primary;
+                chart1.Series[2].YAxisType = AxisType.Primary;
+                chart1.Series[3].YAxisType = AxisType.Secondary;
+                chart1.Series[4].YAxisType = AxisType.Secondary;
+
+                //chart1.Series[3].YAxisType = AxisType.Secondary;
+                //chart1.Series[4].YAxisType = AxisType.Secondary;
+                chart1.Series[0].Name = "Laag opgeleid";
+                chart1.Series[1].Name = "Middelbaar opgeleid";
+                chart1.Series[2].Name = "Hoog opgeleid";
+                chart1.Series[3].Name = "Werkloosheid";
+                chart1.Series[4].Name = "Fill";
+
+                chart1.Series[0].ChartType = SeriesChartType.StackedColumn100;
+                chart1.Series[1].ChartType = SeriesChartType.StackedColumn100;
+                chart1.Series[2].ChartType = SeriesChartType.StackedColumn100;
+                chart1.Series[3].ChartType = SeriesChartType.StackedColumn100;
+                chart1.Series[4].ChartType = SeriesChartType.StackedColumn100;
+
+                chart1.ChartAreas[0].AxisX.Title = "Wijk";
+                chart1.ChartAreas[0].AxisY.Title = "Percentage";
+
+                chart1.ChartAreas[0].AxisX.LabelStyle.Angle = 0;
+                chart1.ChartAreas[0].Position.Height = 100;
+
+
+                chart1.Series[4].IsVisibleInLegend = false;
+
+                //chart1.Series[0].IsXValueIndexed = true;
+                chart1.Series[0].IsValueShownAsLabel = true;
+                chart1.Series[1].IsValueShownAsLabel = true;
+                chart1.Series[2].IsValueShownAsLabel = true;
+                chart1.Series[3].IsValueShownAsLabel = true;
+
+
+
+
+                chart1.Series[0].BorderColor = Color.Black;
+                chart1.Series[1].BorderColor = Color.Black;
+                chart1.Series[2].BorderColor = Color.Black;
+                chart1.Series[3].BorderColor = Color.Black;
+                //execute fillchart functions 
                 FillChart();
                 FillChart2();
+                //can't click on other checkboxes
                 checkBox2.AutoCheck = false;
                 checkBox1.AutoCheck = false;
                 checkBox4.AutoCheck = false;
@@ -434,7 +562,6 @@ namespace FormsApp
             ShowNoDataText();
             if (checkBox4.Checked)
             {
-                
                 //clears all series
                 chart1.Series.Clear();
                 //adds series again
@@ -444,11 +571,13 @@ namespace FormsApp
                 chart1.Series[0].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Column;
                 chart1.Series[1].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Column;
                 //gives series names
-                chart1.Series[0].Name = "gem inkomen";
-                chart1.Series[1].Name = "gem leeftijd";
+                chart1.Series[0].Name = "Gemiddelde Inkomen";
+                chart1.Series[1].Name = "Gemiddelde Leeftijd";
                 //gives axis names
-                chart1.ChartAreas[0].AxisX.Title = "Wijk";
-                chart1.ChartAreas[0].AxisY.Title = "Aantal Misdrijven";
+                //chart1.ChartAreas[0].AxisX.Title = "Inkomen";
+
+                chart1.ChartAreas[0].AxisY.Title = "Gemiddelde Inkomen";
+                chart1.ChartAreas[0].AxisY2.Title = "Gemiddelde Leeftijd";
                 //enables second Y-Axis
                 chart1.ChartAreas[0].AxisY2.Enabled = AxisEnabled.True;
                 //gives series axis type
@@ -473,7 +602,7 @@ namespace FormsApp
 
         public void ShowNoDataText()
         {
-            if (checkBox4.Checked && (trackBar1.Value == 2010 || trackBar1.Value == 2011 || trackBar1.Value == 2016))
+            if ((checkBox4.Checked || checkBox3.Checked) && (trackBar1.Value == 2010 || trackBar1.Value == 2011 || trackBar1.Value == 2016))
             {
                 textBox2.Visible = true;
             }
@@ -497,6 +626,15 @@ namespace FormsApp
         {
 
         }
+
+        public void DoubleNames()
+        {
+
+            chart1.Series[0].Name = comboBox1.GetItemText(comboBox1.SelectedItem) + " ";
+            chart1.Series[1].Name = comboBox2.GetItemText(comboBox2.SelectedItem);
+
+        }
+
     }
 }
 
