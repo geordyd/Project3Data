@@ -100,7 +100,8 @@ namespace FormsApp
                     chart1.Series[1].Points.AddXY(row[0], row[2]);
                     chart1.Series[2].Points.AddXY(row[0], row[3]);
                     chart1.Series[3].Points.AddXY(row[0], row[4]);
-                    chart1.Series[4].Points.AddXY(row[0], 100);
+                    var count = chart1.Series[3].Points.Count;
+                    chart1.Series[4].Points.AddXY(row[0], 100 - count);
                 }
                 else if (checkBox4.Checked)
                 {
