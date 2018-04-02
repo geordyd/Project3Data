@@ -100,7 +100,10 @@ namespace FormsApp
                     chart1.Series[1].Points.AddXY(row[0], row[2]);
                     chart1.Series[2].Points.AddXY(row[0], row[3]);
                     chart1.Series[3].Points.AddXY(row[0], row[4]);
-                    chart1.Series[4].Points.AddXY(row[0], 100);
+                    foreach (DataPoint point in chart1.Series[3].Points)
+                    {
+                        chart1.Series[4].Points.AddXY(row[0], 100.0 - point.YValues[0]);
+                    }
                 }
                 else if (checkBox4.Checked)
                 {
@@ -164,12 +167,16 @@ namespace FormsApp
                 }
                 else if (checkBox3.Checked)
                 {
+                    chart1.Series[4].Points.Clear();
                     chart1.Series[0].Points.AddXY(row[0], row[1]);
                     chart1.Series[1].Points.AddXY(row[0], row[2]);
                     chart1.Series[2].Points.AddXY(row[0], row[3]);
                     chart1.Series[3].Points.AddXY(row[0], row[4]);
-                    var count = chart1.Series[3].Points.Count;
-                    chart1.Series[4].Points.AddXY(row[0], 100 - count);
+                    foreach (DataPoint point in chart1.Series[3].Points)
+                    {
+                        chart1.Series[4].Points.AddXY(row[0], 100.0 - point.YValues[0]);
+
+                    }
                 }
                 else if (checkBox4.Checked)
                 {
